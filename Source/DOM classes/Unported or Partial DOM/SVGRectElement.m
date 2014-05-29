@@ -27,7 +27,7 @@ void CGPathAddRoundedRect (CGMutablePathRef path, CGRect rect, CGFloat radiusX, 
 #if (!(__IPHONE_OS_VERSION_MAX_ALLOWED < __IPHONE_7_0) && !(__MAC_OS_X_VERSION_MAX_ALLOWED < __MAC_10_9))
 // adapted from http://www.cocoanetics.com/2010/02/drawing-rounded-rectangles/
 
-static void CGPathAddRoundedRect (CGMutablePathRef path, CGRect rect, CGFloat radiusX, CGFloat radiusY) {
+void CGPathAddRoundedRect (CGMutablePathRef path, CGRect rect, CGFloat radiusX, CGFloat radiusY) {
 	CGRect innerRect = CGRectInset(rect, radiusX, radiusY);
 	
 	CGFloat innerRight = innerRect.origin.x + innerRect.size.width;
