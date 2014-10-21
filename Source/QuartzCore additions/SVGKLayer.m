@@ -67,7 +67,8 @@
 
 - (void)dealloc
 {
-	[self removeObserver:self forKeyPath:@"showBorder"];
+    if (self.observationInfo)
+        [self removeObserver:self forKeyPath:@"showBorder"];
 	
 	self.SVGImage = nil;
 }
