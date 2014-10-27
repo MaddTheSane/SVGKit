@@ -326,7 +326,14 @@
     //BIZARRE: Apple sometimes gives a different value for this even when transformAbsolute == identity! : CGRect localPathBB = CGPathGetPathBoundingBox( _pathRelative );
 	//DEBUG ONLY: CGRect unTransformedPathBB = CGPathGetBoundingBox( _pathRelative );
 	CGRect transformedPathBB = CGPathGetBoundingBox( pathToPlaceInLayer );
-
+    
+    //Yose
+    if (isinf(transformedPathBB.origin.x))
+        transformedPathBB.origin.x = 0;
+    
+    if (isinf(transformedPathBB.origin.y))
+        transformedPathBB.origin.y = 0;
+    
 #if IMPROVE_PERFORMANCE_BY_WORKING_AROUND_APPLE_FRAME_ALIGNMENT_BUG
 	transformedPathBB = CGRectIntegral( transformedPathBB ); // ridiculous but improves performance of apple's code by up to 50% !
 #endif
