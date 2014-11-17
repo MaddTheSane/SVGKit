@@ -308,6 +308,13 @@
 		
 		NSString* actualOpacity = [stylableElement cascadedValueForStylableProperty:@"opacity"];
 		layer.opacity = actualOpacity.length > 0 ? [actualOpacity SVGKCGFloatValue] : 1.0f; // svg's "opacity" defaults to 1!
+        
+        // Apply fill-rule on layer (only CAShapeLayer)
+        NSString *fillRule = [stylableElement cascadedValueForStylableProperty:@"fill-rule"];
+        if([fillRule isEqualToString:@"evenodd"] && [layer isKindOfClass:[CAShapeLayer class]]){
+            CAShapeLayer *shapeLayer = (CAShapeLayer *)layer;
+            shapeLayer.fillRule = @"even-odd";
+        }
 	}
 }
 

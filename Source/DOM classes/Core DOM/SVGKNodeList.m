@@ -14,9 +14,14 @@
     return self;
 }
 
--(SVGKNode*) item:(int) index
+-(SVGKNode*) item:(NSInteger) index
 {
 	return (self.internalArray)[index];
+}
+
+- (SVGKNode*)objectAtIndexedSubscript:(NSInteger)idx
+{
+    return [self item:idx];
 }
 
 -(long)length

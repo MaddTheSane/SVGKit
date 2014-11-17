@@ -847,7 +847,7 @@ static char *dd_str_copy(const char *str)
 {
 	if ((self = [super init]))
 	{
-		logMsg     = msg;
+		logMsg     = [msg copy];
 		logLevel   = level;
 		logFlag    = flag;
 		logContext = context;

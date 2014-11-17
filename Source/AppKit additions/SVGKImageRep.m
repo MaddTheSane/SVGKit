@@ -190,12 +190,16 @@
 		
         self.colorSpaceName = NSCalibratedRGBColorSpace;
         self.alpha = YES;
-        self.bitsPerSample = 0;
         self.opaque = NO;
 		[self setSize:self.image.size sizeImage:NO];
 		self.interpolationQuality = kCGInterpolationDefault;
 		self.antiAlias = YES;
 		self.curveFlatness = 1.0;
+        
+        // Setting these to zero will tell NSImage that this image is resolution-independant.
+        self.pixelsHigh = 0;
+        self.pixelsWide = 0;
+        self.bitsPerSample = 0;
 	}
 	return self;
 }
@@ -213,8 +217,6 @@
 - (void)setSize:(NSSize)aSize sizeImage:(BOOL)theSize
 {
     [super setSize:aSize];
-    self.pixelsHigh = ceil(aSize.height);
-    self.pixelsWide = ceil(aSize.width);
     if (theSize) {
         self.image.size = aSize;
     }
@@ -241,13 +243,13 @@
 	NSSize scaledSize = rect.size;
 	if (!CGSizeEqualToSize(self.image.size, scaledSize)) {
 		//For when we're at the full size.
-		if (CGSizeEqualToSize(CGSizeMake(self.pixelsWide, self.pixelsHigh), scaledSize)) {
+		if (CGSizeEqualToSize(self.size, scaledSize)) {
 			return [super drawInRect:rect];
 		} else {
 			[self.image scaleToFitInside:scaledSize];
 		}
-	} else if (CGSizeEqualToSize(CGSizeMake(self.pixelsWide, self.pixelsHigh), scaledSize) &&
-			   CGSizeEqualToSize(self.image.size, CGSizeMake(self.pixelsWide, self.pixelsHigh))) {
+	} else if (CGSizeEqualToSize(self.size, scaledSize) &&
+			   CGSizeEqualToSize(self.image.size, self.size)) {
 		return [super drawInRect:rect];
 	}
 
@@ -292,6 +294,11 @@
 	
 	return YES;
 }
+
+//- (CGImageRef)CGImageForProposedRect:(NSRect *)proposedDestRect context:(NSGraphicsContext *)context hints:(NSDictionary *)hints
+//{
+//
+//}
 
 #pragma mark - Inherited protocols
 

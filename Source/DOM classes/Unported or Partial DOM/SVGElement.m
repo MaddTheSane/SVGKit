@@ -42,8 +42,8 @@
 
 @synthesize identifier = _identifier;
 @synthesize xmlbase;
-@synthesize rootOfCurrentDocumentFragment;
-@synthesize viewportElement;
+@synthesize rootOfCurrentDocumentFragment = _rootOfCurrentDocumentFragment;
+@synthesize viewportElement = _viewportElement;
 @synthesize stringValue = _stringValue;
 
 @synthesize className; /**< CSS class, from SVGStylable interface */
@@ -173,6 +173,20 @@
 			}
 		}
 	}
+}
+
+- (void)setRootOfCurrentDocumentFragment:(SVGSVGElement *)root {
+    _rootOfCurrentDocumentFragment = root;
+    for (SVGKNode *child in self.childNodes)
+        if ([child isKindOfClass:SVGElement.class])
+            ((SVGElement *) child).rootOfCurrentDocumentFragment = root;
+}
+
+- (void)setViewportElement:(SVGElement *)viewport {
+    _viewportElement = viewport;
+    for (SVGKNode *child in self.childNodes)
+        if ([child isKindOfClass:SVGElement.class])
+            ((SVGElement *) child).viewportElement = viewport;
 }
 
 - (void)loadDefaults {

@@ -75,7 +75,7 @@ class SwiftMasterViewController: UITableViewController, UIAlertViewDelegate {
         
         if let ourCell = cell {
             let object = sampleNames[indexPath.row]
-            ourCell.textLabel?.text = object
+            ourCell.textLabel.text = object
             return ourCell
         }
         return UITableViewCell()

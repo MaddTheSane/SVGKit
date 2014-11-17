@@ -10,10 +10,6 @@
 @property(nonatomic,readwrite) DOMNodeType nodeType;
 @property(nonatomic,weak,readwrite) SVGKNode* parentNode;
 @property(nonatomic,strong,readwrite) SVGKNodeList* childNodes;
-@property(nonatomic,weak,readwrite) SVGKNode* firstChild;
-@property(nonatomic,weak,readwrite) SVGKNode* lastChild;
-@property(nonatomic,weak,readwrite) SVGKNode* previousSibling;
-@property(nonatomic,weak,readwrite) SVGKNode* nextSibling;
 @property(nonatomic,strong,readwrite) SVGKNamedNodeMap* attributes;
 
 @property(nonatomic,weak,readwrite) SVGKDocument* ownerDocument;

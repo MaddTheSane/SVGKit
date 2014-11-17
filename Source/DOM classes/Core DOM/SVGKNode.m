@@ -166,6 +166,52 @@
 
 #pragma mark - Official DOM method implementations
 
+-(SVGKNode *)firstChild
+{
+    if( [self.childNodes length] < 1 )
+        return nil;
+    else
+        return [self.childNodes item:0];
+}
+
+-(SVGKNode *)lastChild
+{
+    if( [self.childNodes length] < 1 )
+        return nil;
+    else
+        return [self.childNodes item: [self.childNodes length] - 1];
+}
+
+-(SVGKNode *)previousSibling
+{
+    if( self.parentNode == nil )
+        return nil;
+    else
+    {
+        NSUInteger indexInParent = [self.parentNode.childNodes.internalArray indexOfObject:self];
+        
+        if( indexInParent < 1 )
+            return nil;
+        else
+            return [self.parentNode.childNodes item:indexInParent-1];
+    }
+}
+
+-(SVGKNode *)nextSibling
+{
+    if( self.parentNode == nil )
+        return nil;
+    else
+    {
+        NSUInteger indexInParent = [self.parentNode.childNodes.internalArray indexOfObject:self];
+        
+        if( indexInParent >= [self.parentNode.childNodes length] )
+            return nil;
+        else
+            return [self.parentNode.childNodes item:indexInParent + 1];
+    }
+}
+
 -(SVGKNode*) insertBefore:(SVGKNode*) newChild refChild:(SVGKNode*) refChild
 {
 	if( refChild == nil )
@@ -508,7 +554,7 @@
 		case DOMNodeType_DOCUMENT_NODE:
 		case DOMNodeType_ELEMENT_NODE:
 		{
-			[outputString appendString:@">\n"];
+			[outputString appendString:@">"];
 		}break;
 			
 		case DOMNodeType_DOCUMENT_TYPE_NODE:
@@ -571,7 +617,7 @@
 		case DOMNodeType_DOCUMENT_NODE:
 		case DOMNodeType_ELEMENT_NODE:
 		{
-			[outputString appendFormat:@"</%@>\n", self.nodeName];
+			[outputString appendFormat:@"</%@>", self.nodeName];
 		}break;
 			
 		case DOMNodeType_DOCUMENT_TYPE_NODE:

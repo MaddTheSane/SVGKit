@@ -9,10 +9,7 @@
 #import <Cocoa/Cocoa.h>
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
-{
-	IBOutlet NSImageCell *svgSelected;
-}
-
+@property (weak) IBOutlet NSImageCell *svgSelected;
 @property (weak) IBOutlet NSWindow *window;
 @property BOOL useRepDirectly;
 

@@ -22,6 +22,8 @@
 
 @property(readonly) long length;
 
--(SVGKNode*) item:(int) index;
+-(SVGKNode*) item:(NSInteger) index;
+
+- (SVGKNode*)objectAtIndexedSubscript:(NSInteger)idx;
 
 @end
