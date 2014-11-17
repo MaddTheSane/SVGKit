@@ -222,12 +222,12 @@
 
 + (void)loadSVGKImageRep
 {
-	[NSImageRep registerImageRepClass:[SVGKImageRep class]];
+	//[NSImageRep registerImageRepClass:[SVGKImageRep class]];
 }
 
 + (void)unloadSVGKImageRep
 {
-	[NSImageRep unregisterImageRepClass:[SVGKImageRep class]];
+	//[NSImageRep unregisterImageRepClass:[SVGKImageRep class]];
 }
 
 - (instancetype)initWithSVGImage:(SVGKImage*)theImage
