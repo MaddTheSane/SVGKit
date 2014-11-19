@@ -1,5 +1,6 @@
 #import "SVGGElement.h"
 #import "CALayerWithChildHitTest.h"
+#import "CAShapeLayerWithHitTest.h"
 #import "SVGHelperUtilities.h"
 
 @implementation SVGGElement 
@@ -18,12 +19,28 @@
 
 - (void)layoutLayer:(CALayer *)layer {
 	
+    //Add the masks here?
+    
     // null rect union any other rect will return the other rect
 	CGRect mainRect = CGRectNull;
+	
 	
 	/** make mainrect the UNION of all sublayer's frames (i.e. their individual "bounds" inside THIS layer's space) */
 	for ( CALayer *currentLayer in [layer sublayers] )
 	{
+		if ([currentLayer valueForKey:kSVGElementIdentifier])
+		{
+			for (SVGElement *aNode in [self childNodes])
+			{
+				if ([[aNode identifier] isEqualToString:[currentLayer valueForKey:kSVGElementIdentifier]])
+				{
+					
+					
+					
+				}
+			}
+		}
+		
 		CGRect subLayerFrame = currentLayer.frame;
 		mainRect = CGRectUnion(mainRect, subLayerFrame);
 	}
@@ -45,6 +62,7 @@
 	 	 */
     if (CGRectIsNull(mainRect)) {
         // TODO what to do when mainRect is null rect? i.e. no sublayer or all sublayers have null rect frame
+        // OR in my case, somehow they are still null..
     } else {
         for (CALayer *currentLayer in [layer sublayers]) {
             CGRect frame = currentLayer.frame;
@@ -53,6 +71,21 @@
             currentLayer.frame = frame;
         }
     }
+}
+
+- (CAShapeLayer *)shapeLayerWithID:(NSString *)SVGElementID
+{
+    
+    for (CAShapeLayerWithHitTest *clipPathlayer in self.clipPathArray)
+    {
+        
+        if ([[clipPathlayer valueForKey:kSVGElementIdentifier] isEqualToString:SVGElementID])
+            return clipPathlayer;
+        
+    }
+    
+    return nil;
+    
 }
 
 @end

@@ -30,20 +30,21 @@ static NSDictionary *elementMap = nil;
 		
 		if (!elementMap) {
 			elementMap = @{@"svg": [SVGSVGElement class],
-                          @"circle": [SVGCircleElement class],
-                          @"description": [SVGDescriptionElement class],
-                          @"ellipse": [SVGEllipseElement class],
-                          @"g": [SVGGElement class],
-                          @"image": [SVGImageElement class],
-                          @"line": [SVGLineElement class],
-                          @"path": [SVGPathElement class],
-                          @"polygon": [SVGPolygonElement class],
-                          @"polyline": [SVGPolylineElement class],
-                          @"rect": [SVGRectElement class],
-                          @"title": [SVGTitleElement class],
-						   @"text": [SVGTextElement class],
-						   @"textArea": [TinySVGTextAreaElement class],
-};
+                           @"circle": [SVGCircleElement class],
+                           @"description": [SVGDescriptionElement class],
+                           @"ellipse": [SVGEllipseElement class],
+                           @"g": [SVGGElement class],
+                           @"image": [SVGImageElement class],
+                           @"line": [SVGLineElement class],
+                           @"clipPath":[SVGClipPathElement class],
+                           @"path": [SVGPathElement class],
+                           @"polygon": [SVGPolygonElement class],
+                           @"polyline": [SVGPolylineElement class],
+                           @"rect": [SVGRectElement class],
+                           @"title": [SVGTitleElement class],
+                           @"text": [SVGTextElement class],
+                           @"textArea": [TinySVGTextAreaElement class],
+                           };
 		}
 	}
 	return self;

@@ -21,7 +21,7 @@ http://www.w3.org/TR/SVG/masking.html#InterfaceSVGClipPathElement
 
 
 // Does NOT implement ConverterSVGToCALayer because <clipPath> elements are never rendered directly; they're only referenced via clip-path attributes in other elements
-@interface SVGClipPathElement : SVGElement <SVGTransformable, SVGStylable>
+@interface SVGClipPathElement : SVGElement <SVGTransformable, ConverterSVGToCALayer, SVGStylable>
 
 @property(nonatomic, readonly) SVG_UNIT_TYPE clipPathUnits;
 

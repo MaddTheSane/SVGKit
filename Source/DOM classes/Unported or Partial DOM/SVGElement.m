@@ -380,6 +380,8 @@
 
 #pragma mark - Objective-C init methods (not in SVG Spec - the official spec has no explicit way to create nodes, which is clearly a bug in the Spec. Until they fix the spec, we have to do something or else SVG would be unusable)
 
+#pragma mark - OR how you create a class is an implementation detail.  WHO CARES? As long as it works. :-)
+
 - (instancetype)initWithLocalName:(NSString*) n attributes:(NSMutableDictionary*) attributes
 {
 	self = [super initWithLocalName:n attributes:attributes];

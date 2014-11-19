@@ -10,11 +10,17 @@
 #import "SVGUtils.h"
 #import "SVGKPointsAndPathsParser.h"
 
+#import "SVGClipPathElement.h"
+
 #import "SVGElement_ForParser.h" // to resolve Xcode circular dependencies; in long term, parsing SHOULD NOT HAPPEN inside any class whose name starts "SVG" (because those are reserved classes for the SVG Spec)
+
+#define IRIDelimitterStart  @"url(#"
+#define IRIDelimitterEnd    @")"
 
 @interface SVGPathElement ()
 
 - (void) parseData:(NSString *)data;
+- (void) parseClipPath:(NSString *)clipPathIdentifier;
 
 @end
 
@@ -24,7 +30,40 @@
 {
 	[super postProcessAttributesAddingErrorsTo:parseResult];
 	
+    //AH HA! I need to add a clip-path reference here! w00t!
+    [self parseClipPath:[self getAttribute:@"clip-path"]];
+    
 	[self parseData:[self getAttribute:@"d"]];
+}
+
+//Okay--Assumption right now is that there is always going to be a reference for a clip-path via a URL---And it's the correct assumption!
+
+//An IRI reference to another GRAPHICAL object within the same SVG document fragment which will be used as the clipping path.
+//If the IRI reference is not valid (e.g it points to an object that doesn't exist or the object is not a ‘clipPath’ element)
+//the ‘clip-path’ property must be treated as if it hadn't been specified.
+- (void)parseClipPath:(NSString *)clipPathIdentifier
+{
+    
+    if (!clipPathIdentifier)
+        return;
+    
+    NSRange locationRange = [clipPathIdentifier rangeOfString:IRIDelimitterStart];
+    
+    if (locationRange.location != NSNotFound)
+    {
+        
+        NSUInteger loc = locationRange.location + locationRange.length;
+        
+        NSRange identifierRange = NSMakeRange(loc, clipPathIdentifier.length - (loc + 1));
+        NSString *identifier = [clipPathIdentifier substringWithRange:identifierRange];
+		
+		self.clipPathIdentifier = identifier;
+        
+    }
+    else
+        return;
+        
+    
 }
 
 - (void)parseData:(NSString *)data

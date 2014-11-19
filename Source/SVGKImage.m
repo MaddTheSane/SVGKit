@@ -48,11 +48,15 @@
 @property (nonatomic, strong, readwrite) CALayer* CALayerTree;
 @property (nonatomic, strong, readwrite) NSString* nameUsedToInstantiate;
 @property (nonatomic, getter = hasRenderingIssue) BOOL renderingIssue;
+@property (readwrite, strong) NSMutableArray *clipPathLayerArray;
 
 #pragma mark - UIImage methods cloned and re-implemented as SVG intelligent methods
 //NOT DEFINED: what is the scale for a SVGKImage? @property(nonatomic,readwrite) CGFloat            scale __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_4_0);
 
+- (CAShapeLayer *)clipPathLayerWithIdentifier:(NSString *)identifier;
+
 @end
+
 
 #pragma mark - main class
 @implementation SVGKImage
@@ -283,6 +287,8 @@
 		
 		self.parseErrorsAndWarnings = parseResult;
 		
+        _clipPathLayerArray = [NSMutableArray array];
+        
 		if( parseErrorsAndWarnings.parsedDocument != nil )
 		{
 			self.DOMDocument = parseErrorsAndWarnings.parsedDocument;
@@ -656,7 +662,7 @@
 {
 	CALayer *layer = [element newLayer];
 	
-	//DEBUG: DDLogVerbose(@"[%@] DEBUG: converted SVG element (class:%@) to CALayer (class:%@ frame:%@ pointer:%@) for id = %@", [self class], NSStringFromClass([element class]), NSStringFromClass([layer class]), NSStringFromCGRect( layer.frame ), layer, element.identifier);
+	//DEBUG: NSLog(@"[%@] DEBUG: converted SVG element (class:%@) to CALayer (class:%@ frame:%@ pointer:%@) for id = %@", [self class], NSStringFromClass([element class]), NSStringFromClass([layer class]), NSStringFromCGRect( layer.frame ), layer, element.identifier);
 	
 	SVGKNodeList* childNodes = element.childNodes;
 	
@@ -685,8 +691,48 @@
 				continue;
 			}
 			
+            
+            
 			sublayerCount++;
-			[layer addSublayer:sublayer];
+            
+            if (child && ![child isKindOfClass:[SVGClipPathElement class]])
+			{
+				if ([child isKindOfClass:[SVGPathElement class]])
+				{
+					if ([(SVGPathElement *)child clipPathIdentifier])
+					{
+						//CAShapeLayer *clipLayer = [self clipPathLayerWithIdentifier:[(SVGPathElement *)child clipPathIdentifier]];
+//						if (clipLayer)
+//							NSLog(@"Success!!");
+						//sublayer.mask = clipLayer;
+						//[(CAShapeLayer *)sublayer setStrokeColor:[[NSColor redColor] CGColor]];
+					}
+					
+				}
+                [layer addSublayer:sublayer];
+			}
+            else
+            {
+				//Make sure that the layer is filled!
+				
+				[[sublayer sublayers] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+					
+					
+					if ([obj isKindOfClass:[CAShapeLayer class]])
+					{
+						CAShapeLayer *maskLayer = (CAShapeLayer *)obj;
+						[maskLayer setFillColor:[[NSColor blackColor] CGColor]];
+						
+						
+					}
+					
+				}];
+				//[layer addSublayer:sublayer];
+				[sublayer setZPosition:100];
+				[[self clipPathLayerArray] addObject:sublayer];
+
+				
+            }
 		}
 	}
 	
@@ -753,6 +799,23 @@
 		return newLayerTree;
 	}
 }
+
+-(CAShapeLayer *)clipPathLayerWithIdentifier:(NSString *)identifier
+{
+    
+    for (CAShapeLayer *clipPathLayer in self.clipPathLayerArray)
+    {
+        
+        if ([[clipPathLayer valueForKey:kSVGElementIdentifier] isEqualToString:identifier])
+            return clipPathLayer;
+        
+    }
+    
+    
+    return nil;
+    
+}
+
 
 static inline NSString *exceptionInfo(NSException *e)
 {
