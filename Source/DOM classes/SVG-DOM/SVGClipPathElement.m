@@ -46,7 +46,8 @@
     //How do I solve this?  To me, it would seem like the thing to do would be literally use that path as our own, if it is setup like that.
     
     BOOL containsUsePathReference = NO;
-    
+	
+	CAShapeLayer* _layer = nil;
     
     for (SVGKNode *aNode in [self childNodes])
     {
@@ -54,19 +55,16 @@
         if ([aNode isKindOfClass:[SVGUseElement class]])
         {
          
-            if ([(SVGUseElement *)aNode instanceRoot].correspondingElement)
-            {
-                    
-            }
-            
+			
         }
+		else
+			_layer = [CALayerWithChild]
         
     }
     
         
         
-    CAShapeLayer* _layer = [CAShapeLayerWithClipRender layer];
-    
+	
     [SVGHelperUtilities configureCALayer:_layer usingElement:self];
     
     return _layer;

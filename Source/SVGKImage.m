@@ -8,6 +8,7 @@
 #import "SVGTitleElement.h"
 #import "SVGPathElement.h"
 #import "SVGUseElement.h"
+#import "SVGGElement.h"
 
 #import "SVGSVGElement_Mutable.h" // so that changing .size can change the SVG's .viewport
 
@@ -700,16 +701,23 @@
             if (child && ![child isKindOfClass:[SVGClipPathElement class]])
 			{
 
-					if ([child clipPathIdentifier])
-					{
-						
-						CAShapeLayer *clipLayer = [self clipPathLayerWithIdentifier:[(SVGPathElement *)child clipPathIdentifier]];
-//						if (clipLayer)
-//							NSLog(@"Success!!");
-						sublayer.mask = clipLayer;
-						//[(CAShapeLayer *)sublayer setStrokeColor:[[NSColor redColor] CGColor]];
-					}
+				if ([child clipPathIdentifier] && [child isKindOfClass:[SVGGElement class]])
+				{
 					
+					CAShapeLayer *clipLayer = [self clipPathLayerWithIdentifier:[(SVGPathElement *)child clipPathIdentifier]];
+					if (clipLayer)
+						NSLog(@"Success!!");
+					else
+						NSLog(@"Bummer!");
+					
+					sublayer.mask = clipLayer;
+					//[(CAShapeLayer *)sublayer setStrokeColor:[[NSColor redColor] CGColor]];
+				}
+				
+//				if ([child isKindOfClass:[SVGGElement class]])
+//				{
+//					NSLog(@"Element Title: %@", [child identifier]);
+//				}
 				
                 [layer addSublayer:sublayer];
 			}
@@ -724,13 +732,15 @@
 					{
 						CAShapeLayer *maskLayer = (CAShapeLayer *)obj;
 						[maskLayer setFillColor:[[NSColor blackColor] CGColor]];
-						
-						
+						[maskLayer setStrokeColor:[[NSColor blackColor] CGColor]];
+						[maskLayer setContents:[NSColor clearColor]];
 					}
 					
 				}];
-				//[layer addSublayer:sublayer];
-				[sublayer setZPosition:100];
+//				[layer addSublayer:sublayer];
+//				[sublayer setZPosition:100];
+				[sublayer setContents:[NSColor clearColor]];
+				[sublayer setBackgroundColor:[[NSColor clearColor] CGColor]];
 				[[self clipPathLayerArray] addObject:sublayer];
 
 				
@@ -773,7 +783,7 @@
 	 */
 	[element layoutLayer:layer];
     [layer setNeedsDisplay];
-	
+	printf("Layer %s's frame is: %s\n", [(CALayer *)layer.sublayers.firstObject name].UTF8String ,NSStringFromRect([[[layer sublayers] firstObject] frame]).UTF8String);
 	return layer;
 }
 
