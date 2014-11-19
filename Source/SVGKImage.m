@@ -683,6 +683,8 @@
 	NSUInteger sublayerCount = 0;
 	for (SVGElement *child in childNodes )
 	{
+		
+		
 		if ([child conformsToProtocol:@protocol(ConverterSVGToCALayer)]) {
 			
 			CALayer *sublayer = [self newLayerWithElement:(SVGElement<ConverterSVGToCALayer> *)child];
@@ -697,18 +699,18 @@
             
             if (child && ![child isKindOfClass:[SVGClipPathElement class]])
 			{
-				if ([child isKindOfClass:[SVGPathElement class]])
-				{
-					if ([(SVGPathElement *)child clipPathIdentifier])
+
+					if ([child clipPathIdentifier])
 					{
-						//CAShapeLayer *clipLayer = [self clipPathLayerWithIdentifier:[(SVGPathElement *)child clipPathIdentifier]];
+						
+						CAShapeLayer *clipLayer = [self clipPathLayerWithIdentifier:[(SVGPathElement *)child clipPathIdentifier]];
 //						if (clipLayer)
 //							NSLog(@"Success!!");
-						//sublayer.mask = clipLayer;
+						sublayer.mask = clipLayer;
 						//[(CAShapeLayer *)sublayer setStrokeColor:[[NSColor redColor] CGColor]];
 					}
 					
-				}
+				
                 [layer addSublayer:sublayer];
 			}
             else

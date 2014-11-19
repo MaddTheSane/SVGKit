@@ -12,6 +12,4 @@
 
 @interface SVGPathElement : BaseClassForAllSVGBasicShapes { }
 
-@property (readwrite, strong) NSString *clipPathIdentifier;
-
 @end

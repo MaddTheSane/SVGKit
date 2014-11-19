@@ -14,6 +14,9 @@
 
 #define DEBUG_SVG_ELEMENT_PARSING 0
 
+#define IRIDelimitterStart  @"url(#"
+#define IRIDelimitterEnd    @")"
+
 @class SVGSVGElement;
 //obj-c's compiler sucks, and doesn't allow this line: #import "SVGSVGElement.h"
 
@@ -36,13 +39,14 @@
  The spec isn't clear what happens if this element redefines the viewport itself, but IMHO it implies that the
  viewportElement becomes a reference to "self" */
 @property (nonatomic, weak) SVGElement* viewportElement;
+@property (readwrite, copy) NSString *clipPathIdentifier;
 
 
 #pragma mark - NON-STANDARD features of class (these are things that are NOT in the SVG spec, and should NOT be in SVGKit's implementation - they should be moved to a different class, although WE DO STILL NEED THESE in order to implement the spec, and to provide SVGKit features!)
 
 /*! This is used when generating CALayer objects, to store the id of the SVGElement that created the CALayer */
 #define kSVGElementIdentifier @"SVGElementIdentifier"
-
+#define kSVGClipPathIdentifier @"SVGClipPathIdentifier"
 
 #pragma mark - SVG-spec supporting methods that aren't in the Spec itself
 
