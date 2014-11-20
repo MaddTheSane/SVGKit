@@ -681,7 +681,11 @@
 	 
 	 (parent may have to change its size to fit children)
 	 */
+
 	NSUInteger sublayerCount = 0;
+	
+	if (![element isKindOfClass:[SVGClipPathElement class]])
+	{
 	for (SVGElement *child in childNodes )
 	{
 		
@@ -701,14 +705,14 @@
             if (child && ![child isKindOfClass:[SVGClipPathElement class]])
 			{
 
-				if ([child clipPathIdentifier] && [child isKindOfClass:[SVGGElement class]])
+				if ([child clipPathIdentifier] )//&& [child isKindOfClass:[SVGGElement class]])
 				{
 					
 					CAShapeLayer *clipLayer = [self clipPathLayerWithIdentifier:[(SVGPathElement *)child clipPathIdentifier]];
-					if (clipLayer)
-						NSLog(@"Success!!");
-					else
-						NSLog(@"Bummer!");
+//					if (clipLayer)
+//						NSLog(@"Success!!");
+//					else
+//						NSLog(@"Bummer!");
 					
 					sublayer.mask = clipLayer;
 					//[(CAShapeLayer *)sublayer setStrokeColor:[[NSColor redColor] CGColor]];
@@ -747,6 +751,8 @@
             }
 		}
 	}
+	}
+	
 	
 	/**
 	 If none of the child nodes return a CALayer, we're safe to early-out here (and in fact we need to because
@@ -754,6 +760,8 @@
 	 there may be some nodes like whitespace nodes for which we don't create layers.
 	 */
 	if ( sublayerCount < 1 ) {
+//		if ([[layer name] isEqualToString:@"SVGID_2_"])
+//			printf("Layer %s's frame is: %s\n", [(CALayer *)layer name].UTF8String ,NSStringFromRect([layer frame]).UTF8String);
 		return layer;
 	}
 	
@@ -783,7 +791,6 @@
 	 */
 	[element layoutLayer:layer];
     [layer setNeedsDisplay];
-	printf("Layer %s's frame is: %s\n", [(CALayer *)layer.sublayers.firstObject name].UTF8String ,NSStringFromRect([[[layer sublayers] firstObject] frame]).UTF8String);
 	return layer;
 }
 

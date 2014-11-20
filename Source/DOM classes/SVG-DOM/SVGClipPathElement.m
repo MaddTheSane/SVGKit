@@ -39,32 +39,35 @@
 
 - (CALayer *) newLayer
 {
-    //Okay---so here's the problem...  The clip path may end up referencing another path.  With the SVGKit's current layout, that won't a similar layer.
+    //Okay---so here's the problem...  The clip path may end up referencing another path.  With the SVGKit's current layout, that won't be a similar layer.
     
     //But sublayers will be included in the Masking process.  Now I just need to make sure that the path is closed, and that there is 0XFF for transparency.
     
     //How do I solve this?  To me, it would seem like the thing to do would be literally use that path as our own, if it is setup like that.
     
-    BOOL containsUsePathReference = NO;
+//    BOOL containsUsePathReference = NO;
 	
 	CAShapeLayer* _layer = nil;
     
-    for (SVGKNode *aNode in [self childNodes])
+    for (SVGElement *aNode in [self childNodes])
     {
         
         if ([aNode isKindOfClass:[SVGUseElement class]])
         {
-         
+			
+			SVGUseElement *curElement = (SVGUseElement *)aNode;
+			
+			//Danger Will Robinson...
+			_layer = (CAShapeLayer *)[curElement newLayer];
 			
         }
 		else
-			_layer = [CALayerWithChild]
-        
+		{
+			continue;
+		}
+		
     }
     
-        
-        
-	
     [SVGHelperUtilities configureCALayer:_layer usingElement:self];
     
     return _layer;
