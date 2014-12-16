@@ -84,7 +84,8 @@
 	return CGPointMake( xNormalized, yNormalized );
 }
 
--(SVGGradientLayer *)newGradientLayerForObjectRect:(CGRect) objectRect viewportRect:(SVGRect)viewportRect
+//The Problem with the Gradient is that it does not account for the difference in size from the parent's established size.  So let's fix that!
+-(SVGGradientLayer *)newGradientLayerForObjectRect:(CGRect) objectRect viewportRect:(SVGRect)viewportRect viewBoxRect:(SVGRect)viewBoxRect
 {
     SVGGradientLayer *gradientLayer = [[SVGGradientLayer alloc] init];
 	
@@ -95,6 +96,13 @@
 		rectForRelativeUnits = objectRect;
 	else
 		rectForRelativeUnits = CGRectFromSVGRect( viewportRect );
+    
+    
+    //Before we start determining locations, let's apply one last transform to make sure that if the user has inputed a different size, the gradients are transformed as well.
+    CGFloat viewPortScaleX =  viewportRect.width / viewBoxRect.width;
+    CGFloat viewPortScaleY = viewportRect.height / viewBoxRect.height;
+    self.transform = CGAffineTransformConcat(self.transform, CGAffineTransformMakeScale(viewPortScaleX, viewPortScaleY));
+    
     
 	gradientLayer.frame = rectForRelativeUnits;
 	
@@ -121,6 +129,7 @@
         gradientLayer.endPoint = endPoint;
         gradientLayer.type = kExt_CAGradientLayerRadial;
     } else {
+        
         SVGLength* svgX1 = [SVGLength svgLengthFromNSString:[self getAttributeInheritedIfNil:@"x1"]];
         SVGLength* svgY1 = [SVGLength svgLengthFromNSString:[self getAttributeInheritedIfNil:@"y1"]];
         CGPoint startPoint = CGPointMake(svgX1.value, svgY1.value);
