@@ -1162,13 +1162,11 @@
 		5542C893193BCC0F0046BB14 /* SVGTextElement-iOS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SVGTextElement-iOS.m"; sourceTree = "<group>"; };
 		55435573177F4F5D007E1FAD /* SVGKImageRep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVGKImageRep.h; sourceTree = "<group>"; };
 		55435574177F4F5D007E1FAD /* SVGKImageRep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVGKImageRep.m; sourceTree = "<group>"; };
-
 		5554213719EDC2FB004388E4 /* SVGKit+SwiftAdditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SVGKit+SwiftAdditions.swift"; sourceTree = "<group>"; usesTabs = 1; };
 		555866AC18626C0C005ACAE9 /* SVGAnimatedPreserveAspectRatio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVGAnimatedPreserveAspectRatio.h; sourceTree = "<group>"; };
 		555866AD18626C0C005ACAE9 /* SVGAnimatedPreserveAspectRatio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVGAnimatedPreserveAspectRatio.m; sourceTree = "<group>"; };
 		555866AE18626C0C005ACAE9 /* SVGPreserveAspectRatio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVGPreserveAspectRatio.h; sourceTree = "<group>"; };
 		555866AF18626C0C005ACAE9 /* SVGPreserveAspectRatio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVGPreserveAspectRatio.m; sourceTree = "<group>"; };
-
 		555866B818626C4D005ACAE9 /* SVGKNamedNodeMap_Iterable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVGKNamedNodeMap_Iterable.h; sourceTree = "<group>"; };
 		5563201419B670DD0097D2EF /* SVGKSourceNSData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVGKSourceNSData.h; sourceTree = "<group>"; };
 		5563201519B670DD0097D2EF /* SVGKSourceNSData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVGKSourceNSData.m; sourceTree = "<group>"; };
@@ -2943,7 +2941,7 @@
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "XCodeProjectData/SVGKit-OSX/SVGKit-Prefix.pch";
+				GCC_PREFIX_HEADER = "XCodeProjectData/SVGKit-OSX/SVGKit-OSX-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"${SDK_DIR}/usr/include/libxml2",
 					"$(inherited)",
@@ -2971,7 +2969,7 @@
 				EXPORTED_SYMBOLS_FILE = "";
 				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "XCodeProjectData/SVGKit-OSX/SVGKit-Prefix.pch";
+				GCC_PREFIX_HEADER = "XCodeProjectData/SVGKit-OSX/SVGKit-OSX-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"${SDK_DIR}/usr/include/libxml2",
 					"$(inherited)",

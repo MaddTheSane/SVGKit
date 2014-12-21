@@ -27,30 +27,11 @@
 }
 
 - (void)renderInContext:(CGContextRef)ctx {
-	self.backgroundColor = [[NSColor clearColor] CGColor];
-    CGContextSaveGState(ctx);
+	
+	CGContextSaveGState(ctx);
 
-//	if ([self.mask isKindOfClass:[CAShapeLayer class]])
-//	{
-//		CAShapeLayer *maskingLayer = (CAShapeLayer *)self.mask;
-//		CGAffineTransform theTransform = self.affineTransform;
-//		
-//		CGPathRef maskingPath = CGPathCreateCopyByTransformingPath(maskingLayer.path, &theTransform);
-//		CGContextAddPath(ctx, maskingPath);
-//		CGContextConcatCTM(ctx,theTransform);
-//		CGPathRelease(maskingPath);
-//	}
-//	else
-	
-	
-	{
-		CGContextAddPath(ctx, maskPath);
-	}
+	CGContextAddPath(ctx, maskPath);
     CGContextClip(ctx);
-//	NSLog(@"%@", NSStringFromRect(CGContextGetPathBoundingBox(ctx)));
-	
-//	CGContextClipToRect(ctx, CGPathGetBoundingBox(maskPath));
-//	CGContextSetBlendMode(ctx, kCGBlendModeNormal);
     if ([self.type isEqualToString:kExt_CAGradientLayerRadial]) {
         
         size_t num_locations = self.locations.count;
