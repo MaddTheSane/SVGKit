@@ -678,9 +678,9 @@
 		5568CD49177B6A7900047B7A /* ContextFilterLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A5AD58175FEBB0009F2FDD /* ContextFilterLogFormatter.m */; };
 		5568CD4A177B6A7900047B7A /* DispatchQueueLogFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 55A5AD59175FEBB0009F2FDD /* DispatchQueueLogFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5568CD4B177B6A7900047B7A /* DispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A5AD5A175FEBB0009F2FDD /* DispatchQueueLogFormatter.m */; };
-		5568CD4C177B6B2000047B7A /* Lumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5568CD2F177B69B700047B7A /* Lumberjack.framework */; };
-		5568CD50177B6B3A00047B7A /* Lumberjack.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 5568CD2F177B69B700047B7A /* Lumberjack.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		5568CD5C177B701900047B7A /* Lumberjack.h in Headers */ = {isa = PBXBuildFile; fileRef = 5568CD5B177B701900047B7A /* Lumberjack.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5568CD4C177B6B2000047B7A /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5568CD2F177B69B700047B7A /* CocoaLumberjack.framework */; };
+		5568CD50177B6B3A00047B7A /* CocoaLumberjack.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 5568CD2F177B69B700047B7A /* CocoaLumberjack.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		5568CD5C177B701900047B7A /* CocoaLumberjack.h in Headers */ = {isa = PBXBuildFile; fileRef = 5568CD5B177B701900047B7A /* CocoaLumberjack.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		556CACC919D5C37C00DAEFCA /* SVGKit-all.h in Headers */ = {isa = PBXBuildFile; fileRef = 556CACC819D5C37C00DAEFCA /* SVGKit-all.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		556CACCA19D5C37C00DAEFCA /* SVGKit-all.h in Headers */ = {isa = PBXBuildFile; fileRef = 556CACC819D5C37C00DAEFCA /* SVGKit-all.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		556CACF719D644FA00DAEFCA /* SVGClipPathElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 55F2685819B66C6500F6410E /* SVGClipPathElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -946,7 +946,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				5568CD50177B6B3A00047B7A /* Lumberjack.framework in Copy Frameworks */,
+				5568CD50177B6B3A00047B7A /* CocoaLumberjack.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -967,7 +967,7 @@
 		5540E67317387C9F004029EF /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		5540E67417387C9F004029EF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5540E67717387C9F004029EF /* SVGKit-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SVGKit-Info.plist"; sourceTree = "<group>"; };
-		5540E67B17387C9F004029EF /* SVGKit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "SVGKit-Prefix.pch"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		5540E67B17387C9F004029EF /* SVGKit-OSX-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "SVGKit-OSX-Prefix.pch"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		5540E68717387F2A004029EF /* SVGKAppleSucksDOMImplementation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVGKAppleSucksDOMImplementation.h; sourceTree = "<group>"; };
 		5540E68817387F2A004029EF /* SVGKAppleSucksDOMImplementation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SVGKAppleSucksDOMImplementation.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		5540E68917387F2A004029EF /* SVGKAttr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVGKAttr.h; sourceTree = "<group>"; };
@@ -1156,26 +1156,28 @@
 		5542C830193BBEB90046BB14 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		5542C84A193BBFC50046BB14 /* SVGKFastImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVGKFastImageView.m; sourceTree = "<group>"; };
 		5542C84C193BBFC50046BB14 /* SVGKImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVGKImageView.m; sourceTree = "<group>"; };
-		5542C84E193BBFC50046BB14 /* SVGKLayeredImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVGKLayeredImageView.m; sourceTree = "<group>"; };
+		5542C84E193BBFC50046BB14 /* SVGKLayeredImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVGKLayeredImageView.m; sourceTree = "<group>"; usesTabs = 0; };
 		5542C852193BC0190046BB14 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
 		5542C874193BC60C0046BB14 /* SVGKit-iOS-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "SVGKit-iOS-Prefix.pch"; path = "XCodeProjectData/SVGKit-iOS/SVGKit-iOS-Prefix.pch"; sourceTree = SOURCE_ROOT; };
 		5542C893193BCC0F0046BB14 /* SVGTextElement-iOS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SVGTextElement-iOS.m"; sourceTree = "<group>"; };
 		55435573177F4F5D007E1FAD /* SVGKImageRep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVGKImageRep.h; sourceTree = "<group>"; };
 		55435574177F4F5D007E1FAD /* SVGKImageRep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVGKImageRep.m; sourceTree = "<group>"; };
-		5554213719EDC2FB004388E4 /* SVGKit+SwiftAdditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SVGKit+SwiftAdditions.swift"; sourceTree = "<group>"; };
-		555866AC18626C0C005ACAE9 /* SVGAnimatedPreserveAspectRatio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVGAnimatedPreserveAspectRatio.h; sourceTree = "<group>"; usesTabs = 1; };
-		555866AD18626C0C005ACAE9 /* SVGAnimatedPreserveAspectRatio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVGAnimatedPreserveAspectRatio.m; sourceTree = "<group>"; usesTabs = 1; };
-		555866AE18626C0C005ACAE9 /* SVGPreserveAspectRatio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVGPreserveAspectRatio.h; sourceTree = "<group>"; usesTabs = 1; };
-		555866AF18626C0C005ACAE9 /* SVGPreserveAspectRatio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVGPreserveAspectRatio.m; sourceTree = "<group>"; usesTabs = 1; };
+
+		5554213719EDC2FB004388E4 /* SVGKit+SwiftAdditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SVGKit+SwiftAdditions.swift"; sourceTree = "<group>"; usesTabs = 1; };
+		555866AC18626C0C005ACAE9 /* SVGAnimatedPreserveAspectRatio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVGAnimatedPreserveAspectRatio.h; sourceTree = "<group>"; };
+		555866AD18626C0C005ACAE9 /* SVGAnimatedPreserveAspectRatio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVGAnimatedPreserveAspectRatio.m; sourceTree = "<group>"; };
+		555866AE18626C0C005ACAE9 /* SVGPreserveAspectRatio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVGPreserveAspectRatio.h; sourceTree = "<group>"; };
+		555866AF18626C0C005ACAE9 /* SVGPreserveAspectRatio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVGPreserveAspectRatio.m; sourceTree = "<group>"; };
+
 		555866B818626C4D005ACAE9 /* SVGKNamedNodeMap_Iterable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVGKNamedNodeMap_Iterable.h; sourceTree = "<group>"; };
 		5563201419B670DD0097D2EF /* SVGKSourceNSData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVGKSourceNSData.h; sourceTree = "<group>"; };
 		5563201519B670DD0097D2EF /* SVGKSourceNSData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVGKSourceNSData.m; sourceTree = "<group>"; };
 		5563201919B675A80097D2EF /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.0.sdk/usr/lib/libxml2.dylib; sourceTree = DEVELOPER_DIR; };
-		5568CD2F177B69B700047B7A /* Lumberjack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Lumberjack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5568CD2F177B69B700047B7A /* CocoaLumberjack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CocoaLumberjack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5568CD33177B69B700047B7A /* Lumberjack-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Lumberjack-Info.plist"; sourceTree = "<group>"; };
 		5568CD35177B69B700047B7A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5568CD37177B69B700047B7A /* Lumberjack-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Lumberjack-Prefix.pch"; sourceTree = "<group>"; };
-		5568CD5B177B701900047B7A /* Lumberjack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lumberjack.h; sourceTree = "<group>"; };
+		5568CD5B177B701900047B7A /* CocoaLumberjack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaLumberjack.h; sourceTree = "<group>"; };
 		556CACC819D5C37C00DAEFCA /* SVGKit-all.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SVGKit-all.h"; path = "Source/SVGKit-all.h"; sourceTree = SOURCE_ROOT; };
 		5574ADA917889CA000EA4281 /* SVGKSource-private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SVGKSource-private.h"; path = "Source/SVGKSource-private.h"; sourceTree = SOURCE_ROOT; };
 		55788778178892D30021D775 /* SVGKImage-private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SVGKImage-private.h"; path = "Source/SVGKImage-private.h"; sourceTree = SOURCE_ROOT; };
@@ -1277,7 +1279,7 @@
 			files = (
 				55C361A5178212F800BA24FA /* libxml2.dylib in Frameworks */,
 				55F3267A178156770064271D /* QuartzCore.framework in Frameworks */,
-				5568CD4C177B6B2000047B7A /* Lumberjack.framework in Frameworks */,
+				5568CD4C177B6B2000047B7A /* CocoaLumberjack.framework in Frameworks */,
 				55C361A11782102900BA24FA /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1356,7 +1358,7 @@
 			isa = PBXGroup;
 			children = (
 				5540E66C17387C9F004029EF /* SVGKit.framework */,
-				5568CD2F177B69B700047B7A /* Lumberjack.framework */,
+				5568CD2F177B69B700047B7A /* CocoaLumberjack.framework */,
 				5542C821193BBEB90046BB14 /* libSVGKit-iOS.1.2.0pre.a */,
 				551164AB1970EE8B00C8A63D /* SVGKit.framework */,
 				55825B4119EC80C400635497 /* SVGKit-iOS Framework Tests.xctest */,
@@ -1412,7 +1414,7 @@
 				5540E816173881BF004029EF /* InfoPlist.strings */,
 				55C360CD178203C500BA24FA /* SVGKit_logging.pch */,
 				5542C874193BC60C0046BB14 /* SVGKit-iOS-Prefix.pch */,
-				5540E67B17387C9F004029EF /* SVGKit-Prefix.pch */,
+				5540E67B17387C9F004029EF /* SVGKit-OSX-Prefix.pch */,
 				5580EBDA1744B702005BE5AC /* SVGKit.exp */,
 				55EB3EC51970D9DC00D03713 /* SVGKit.modulemap */,
 			);
@@ -1730,8 +1732,11 @@
 		5542C848193BBFC50046BB14 /* UIKit additions */ = {
 			isa = PBXGroup;
 			children = (
+				55B4D79F173EC58700D2C676 /* SVGKImageView.h */,
 				5542C84C193BBFC50046BB14 /* SVGKImageView.m */,
+				55B4D79D173EC58700D2C676 /* SVGKFastImageView.h */,
 				5542C84A193BBFC50046BB14 /* SVGKFastImageView.m */,
+				55B4D7A1173EC58700D2C676 /* SVGKLayeredImageView.h */,
 				5542C84E193BBFC50046BB14 /* SVGKLayeredImageView.m */,
 			);
 			name = "UIKit additions";
@@ -1757,6 +1762,7 @@
 			);
 			path = "SVGKit-iOS Tests";
 			sourceTree = "<group>";
+			usesTabs = 1;
 		};
 		55825B7319EC829800635497 /* Auxiliary files */ = {
 			isa = PBXGroup;
@@ -1792,7 +1798,7 @@
 		55A5AD4B175FEBB0009F2FDD /* Lumberjack */ = {
 			isa = PBXGroup;
 			children = (
-				5568CD5B177B701900047B7A /* Lumberjack.h */,
+				5568CD5B177B701900047B7A /* CocoaLumberjack.h */,
 				55A5AD4C175FEBB0009F2FDD /* DDAbstractDatabaseLogger.h */,
 				55A5AD4D175FEBB0009F2FDD /* DDAbstractDatabaseLogger.m */,
 				55A5AD4E175FEBB0009F2FDD /* DDASLLogger.h */,
@@ -1824,11 +1830,8 @@
 		55B4D792173EC37900D2C676 /* AppKit additions */ = {
 			isa = PBXGroup;
 			children = (
-				55B4D79F173EC58700D2C676 /* SVGKImageView.h */,
 				55B4D7A0173EC58700D2C676 /* SVGKImageView.m */,
-				55B4D79D173EC58700D2C676 /* SVGKFastImageView.h */,
 				55B4D79E173EC58700D2C676 /* SVGKFastImageView.m */,
-				55B4D7A1173EC58700D2C676 /* SVGKLayeredImageView.h */,
 				55B4D7A2173EC58700D2C676 /* SVGKLayeredImageView.m */,
 				55435573177F4F5D007E1FAD /* SVGKImageRep.h */,
 				558100D31780A11C00B2BB87 /* SVGKImageRep-private.h */,
@@ -2147,7 +2150,7 @@
 				5568CD46177B6A7900047B7A /* DDTTYLogger.h in Headers */,
 				5568CD48177B6A7900047B7A /* ContextFilterLogFormatter.h in Headers */,
 				5568CD4A177B6A7900047B7A /* DispatchQueueLogFormatter.h in Headers */,
-				5568CD5C177B701900047B7A /* Lumberjack.h in Headers */,
+				5568CD5C177B701900047B7A /* CocoaLumberjack.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2209,9 +2212,9 @@
 			productReference = 5542C821193BBEB90046BB14 /* libSVGKit-iOS.1.2.0pre.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		5568CD2E177B69B700047B7A /* Lumberjack */ = {
+		5568CD2E177B69B700047B7A /* CocoaLumberjack */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5568CD3D177B69B700047B7A /* Build configuration list for PBXNativeTarget "Lumberjack" */;
+			buildConfigurationList = 5568CD3D177B69B700047B7A /* Build configuration list for PBXNativeTarget "CocoaLumberjack" */;
 			buildPhases = (
 				5568CD2A177B69B700047B7A /* Sources */,
 				5568CD2B177B69B700047B7A /* Frameworks */,
@@ -2222,9 +2225,9 @@
 			);
 			dependencies = (
 			);
-			name = Lumberjack;
+			name = CocoaLumberjack;
 			productName = Lumberjack;
-			productReference = 5568CD2F177B69B700047B7A /* Lumberjack.framework */;
+			productReference = 5568CD2F177B69B700047B7A /* CocoaLumberjack.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		55825B4019EC80C400635497 /* SVGKit-iOS Framework Tests */ = {
@@ -2297,7 +2300,7 @@
 			targets = (
 				5540E66B17387C9F004029EF /* SVGKit-OS X */,
 				55825B5019EC80D400635497 /* SVGKit-OS X Tests */,
-				5568CD2E177B69B700047B7A /* Lumberjack */,
+				5568CD2E177B69B700047B7A /* CocoaLumberjack */,
 				5542C820193BBEB90046BB14 /* SVGKit-iOS */,
 				551164AA1970EE8B00C8A63D /* SVGKit-iOS Framework */,
 				55825B4019EC80C400635497 /* SVGKit-iOS Framework Tests */,
@@ -2734,7 +2737,7 @@
 /* Begin PBXTargetDependency section */
 		5568CD4E177B6B2700047B7A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 5568CD2E177B69B700047B7A /* Lumberjack */;
+			target = 5568CD2E177B69B700047B7A /* CocoaLumberjack */;
 			targetProxy = 5568CD4D177B6B2700047B7A /* PBXContainerItemProxy */;
 		};
 		55825B4919EC80C400635497 /* PBXTargetDependency */ = {
@@ -3188,7 +3191,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5568CD3D177B69B700047B7A /* Build configuration list for PBXNativeTarget "Lumberjack" */ = {
+		5568CD3D177B69B700047B7A /* Build configuration list for PBXNativeTarget "CocoaLumberjack" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5568CD3B177B69B700047B7A /* Debug */,

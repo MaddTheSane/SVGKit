@@ -9,24 +9,27 @@
 import Foundation
 
 extension SVGKNodeList: SequenceType {
-    public func generate() -> NSFastGenerator {
-        return NSFastGenerator(self)
-    }
+	public func generate() -> IndexingGenerator<[SVGKNode]> {
+		return (internalArray as NSArray as [SVGKNode]).generate()
+	}
 }
 
 extension SVGKImage {
-    public class var cacheEnabled: Bool {
-        get {
-            return isCacheEnabled()
-        }
-        set {
-            if newValue {
-                enableCache()
-            } else {
-                disableCache()
-            }
-        }
-    }
+	public class var cacheEnabled: Bool {
+		get {
+		return isCacheEnabled()
+		}
+		set {
+			if cacheEnabled == newValue {
+				return
+			}
+			if newValue {
+				enableCache()
+			} else {
+				disableCache()
+			}
+		}
+	}
 }
 
 #if os(OSX)

@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="4510" systemVersion="12F37" targetRuntime="iOS.CocoaTouch.iPad" variant="6xAndEarlier" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch.iPad" variant="6xAndEarlier" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment defaultVersion="1072" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailViewController">
@@ -19,51 +18,74 @@
             <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="148">
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="148">
                     <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <items>
                         <barButtonItem title="Item" id="149"/>
                     </items>
                 </toolbar>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" id="99">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" translatesAutoresizingMaskIntoConstraints="NO" id="99">
                     <rect key="frame" x="0.0" y="44" width="768" height="960"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
-                        <view contentMode="scaleToFill" id="108" customClass="SVGKFastImageView">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="108" customClass="SVGKFastImageView">
                             <rect key="frame" x="0.0" y="0.0" width="768" height="960"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Select a sample file from the list on the left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="126">
-                                    <rect key="frame" x="337" y="304" width="320" height="21"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Select a sample file from the list on the left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="126">
+                                    <rect key="frame" x="221" y="304" width="326" height="21"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="(rotate iPad to landscape if you cant see a list)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="129">
-                                    <rect key="frame" x="289" y="371" width="349" height="21"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="(rotate iPad to landscape if you cant see a list)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="129">
+                                    <rect key="frame" x="207" y="371" width="354" height="21"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" animating="YES" style="whiteLarge" id="141">
+                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="141">
                                     <rect key="frame" x="365" y="462" width="37" height="37"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="color" red="0.0061306720160000001" green="0.30146059780000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </activityIndicatorView>
                             </subviews>
                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="centerX" secondItem="129" secondAttribute="centerX" id="37A-vV-9FH"/>
+                                <constraint firstItem="141" firstAttribute="top" secondItem="129" secondAttribute="bottom" constant="70" id="89O-zW-lBY"/>
+                                <constraint firstAttribute="centerX" secondItem="141" secondAttribute="centerX" id="BAf-we-EHW"/>
+                                <constraint firstItem="129" firstAttribute="top" secondItem="126" secondAttribute="bottom" constant="46" id="Nmh-al-LfF"/>
+                                <constraint firstAttribute="centerX" secondItem="126" secondAttribute="centerX" id="bEc-1s-v6k"/>
+                                <constraint firstAttribute="centerY" secondItem="141" secondAttribute="centerY" id="zyD-GH-dEn"/>
+                            </constraints>
                         </view>
                     </subviews>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="108" secondAttribute="bottom" id="0h6-io-SLX"/>
+                        <constraint firstItem="108" firstAttribute="centerX" secondItem="99" secondAttribute="centerX" id="4UR-Oc-m6T"/>
+                        <constraint firstAttribute="trailing" secondItem="108" secondAttribute="trailing" id="7fo-dj-hO2"/>
+                        <constraint firstItem="108" firstAttribute="top" secondItem="99" secondAttribute="top" id="H7A-Zi-1dk"/>
+                        <constraint firstItem="108" firstAttribute="leading" secondItem="99" secondAttribute="leading" id="RvB-Nf-eTq"/>
+                        <constraint firstItem="108" firstAttribute="centerY" secondItem="99" secondAttribute="centerY" id="fLJ-P9-PaR"/>
+                    </constraints>
                     <connections>
                         <outlet property="delegate" destination="-1" id="124"/>
                     </connections>
                 </scrollView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="99" secondAttribute="trailing" id="BjE-IQ-EkQ"/>
+                <constraint firstItem="99" firstAttribute="leading" secondItem="8" secondAttribute="leading" id="EU8-y6-W1m"/>
+                <constraint firstItem="99" firstAttribute="top" secondItem="148" secondAttribute="bottom" id="Ea2-wu-vC2"/>
+                <constraint firstItem="99" firstAttribute="top" secondItem="8" secondAttribute="top" constant="44" id="M6t-eE-0h6"/>
+                <constraint firstItem="99" firstAttribute="trailing" secondItem="148" secondAttribute="trailing" id="S0o-YT-uz9"/>
+                <constraint firstItem="99" firstAttribute="leading" secondItem="148" secondAttribute="leading" id="UMJ-c3-dWh"/>
+                <constraint firstAttribute="bottom" secondItem="99" secondAttribute="bottom" id="oPd-iq-XeN"/>
+            </constraints>
         </view>
     </objects>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackOpaque"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination"/>
+    </simulatedMetricsContainer>
 </document>

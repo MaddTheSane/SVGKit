@@ -4,7 +4,7 @@
 @dynamic image;
 @synthesize showBorder = _showBorder;
 
-- (id)initWithSVGKImage:(SVGKImage*)im frame:(NSRect)theFrame
+- (instancetype)initWithSVGKImage:(SVGKImage*)im frame:(NSRect)theFrame
 {
 	if ([self isMemberOfClass:[SVGKImageView class]]) {
 		NSAssert(NO, @"[%@] The function %s is meant to be implemented from a subclass, but you called the %@ class directly. This is not a good thing.", [self class], sel_getName(_cmd), [SVGKImageView class]);
@@ -14,7 +14,7 @@
 	return nil;
 }
 
-- (id)init
+- (instancetype)init
 {
 	if( [self isMemberOfClass:[SVGKImageView class]])
 	{
@@ -26,31 +26,27 @@
 		return self = [super init];
 }
 
--(id)initWithFrame:(NSRect)frame
+-(instancetype)initWithFrame:(NSRect)frame
 {
 	if( [self isMemberOfClass:[SVGKImageView class]])
 	{
-		NSAssert(false, @"You cannot init this class directly. Instead, use a subclass e.g. SVGKFastImageView");
-		
-		return nil;
+        DDLogError(@"You cannot init this class directly. Instead, use a subclass e.g. SVGKFastImageView");
 	}
-	else
-		return [super initWithFrame:frame];
+    
+    return [super initWithFrame:frame];
 }
 
-- (id)initWithCoder:(NSCoder *)aDecoder
+- (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
 	if( [self isMemberOfClass:[SVGKImageView class]])
 	{
-		NSAssert(false, @"Xcode is trying to load this class from a StoryBoard or from a NIB/XIB files. You cannot init this class directly - in your Storyboard/NIB file, set the Class type to one of the subclasses, e.g. SVGKFastImageView");
-		
-		return nil;
+        DDLogError(@"Xcode is trying to load this class from a StoryBoard or from a NIB/XIB files. You cannot init this class directly - in your Storyboard/NIB file, set the Class type to one of the subclasses, e.g. SVGKFastImageView");
 	}
-	else
-		return [super initWithCoder:aDecoder];
+	
+	return [super initWithCoder:aDecoder];
 }
 
-- (id)initWithSVGKImage:(SVGKImage*) im
+- (instancetype)initWithSVGKImage:(SVGKImage*) im
 {
 	NSAssert(false, @"Your subclass implementation is broken, it should be calling [super init] not [super initWithSVGKImage:]. Instead, use a subclass e.g. SVGKFastImageView");
     
@@ -60,6 +56,21 @@
 - (BOOL)isFlipped
 {
 	return YES;
+}
+
+/**
+ The intrinsic sized of the image view.
+ 
+ This is useful for playing nicely with autolayout.
+ 
+ @return The size of the image if it has one, or CGSizeZero if not
+ */
+- (NSSize)intrinsicContentSize {
+    if ([self.image hasSize]) {
+        return self.image.size;
+    }
+    
+    return NSZeroSize;
 }
 
 @end

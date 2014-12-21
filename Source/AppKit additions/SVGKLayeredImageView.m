@@ -12,28 +12,35 @@
 @implementation SVGKLayeredImageView
 @synthesize internalBorderLayer = _internalBorderLayer;
 
-- (id)init
+- (instancetype)init
 {
 	NSAssert(false, @"init not supported, use initWithSVGKImage:");
     
     return nil;
 }
 
-- (id)initWithCoder:(NSCoder *)aDecoder
-{
-	return [self initWithSVGKImage:nil frame:CGRectZero];
-}
-
 #define SetupLayer() \
 	self.layer = [[SVGKLayer alloc] init]; \
 	self.wantsLayer = YES
 
--(id)initWithFrame:(NSRect)frame
+- (instancetype)initWithCoder:(NSCoder *)aDecoder
+{
+    if (self = [super initWithCoder:aDecoder]) {
+        SetupLayer();
+        
+        SVGKImage* defaultBlankImage = [SVGKImage defaultImage];
+        
+        self.image = defaultBlankImage;
+    }
+    return self;
+}
+
+-(instancetype)initWithFrame:(NSRect)frame
 {
 	return [self initWithSVGKImage:nil frame:frame];
 }
 
-- (id)initWithSVGKImage:(SVGKImage*) im
+- (instancetype)initWithSVGKImage:(SVGKImage*) im
 {
 	return [self initWithSVGKImage:im frame:CGRectZero];
 }

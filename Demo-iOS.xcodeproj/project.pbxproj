@@ -480,6 +480,7 @@
 			);
 			path = SimpleSwiftDemo;
 			sourceTree = "<group>";
+			usesTabs = 1;
 		};
 		5531280B19EA407B001CA2ED /* Supporting Files */ = {
 			isa = PBXGroup;
@@ -514,6 +515,7 @@
 			);
 			path = "Swift-iOS";
 			sourceTree = "<group>";
+			usesTabs = 1;
 		};
 		55E410AF19B686FD009A2E63 /* Supporting Files */ = {
 			isa = PBXGroup;
@@ -526,10 +528,11 @@
 		661A0DBF161727CF008D5FBE = {
 			isa = PBXGroup;
 			children = (
+				6649E1021617574600AFE92A /* SVGKit.xcodeproj */,
 				66E862561688BA0B0059C9C4 /* Demo-iOS */,
 				55E410AE19B686FD009A2E63 /* Swift-iOS */,
-				66E862761688BA510059C9C4 /* Demo-Samples */,
 				5531280A19EA407B001CA2ED /* SimpleSwiftDemo */,
+				66E862761688BA510059C9C4 /* Demo-Samples */,
 				661A0DCD161727CF008D5FBE /* Frameworks */,
 				661A0DCB161727CF008D5FBE /* Products */,
 				551165F51970F14200C8A63D /* Demo-iOS copy-Info.plist */,
@@ -551,7 +554,6 @@
 		661A0DCD161727CF008D5FBE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6649E1021617574600AFE92A /* SVGKit.xcodeproj */,
 				6649E10E1617578500AFE92A /* libxml2.dylib */,
 				6661A77C1698BBE20061E349 /* CoreText.framework */,
 				6649E0AC1617479200AFE92A /* QuartzCore.framework */,
@@ -841,13 +843,6 @@
 			fileType = wrapper.cfbundle;
 			path = "SVGKit-iOS Framework Tests.xctest";
 			remoteRef = 55E6F32E19EC9EAB00005E76 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		E203AF901A0AC14F000DE028 /* SVGKit-iOS Tests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "SVGKit-iOS Tests.xctest";
-			remoteRef = E203AF8F1A0AC14F000DE028 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */

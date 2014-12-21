@@ -80,6 +80,21 @@
 		55D8EE9817629224009C25F1 /* Text.svg in Resources */ = {isa = PBXBuildFile; fileRef = 55D8EE7417629224009C25F1 /* Text.svg */; };
 		55D8EE9917629224009C25F1 /* uk-only.svg in Resources */ = {isa = PBXBuildFile; fileRef = 55D8EE7517629224009C25F1 /* uk-only.svg */; };
 		55D8EE9A17629224009C25F1 /* voies.svg in Resources */ = {isa = PBXBuildFile; fileRef = 55D8EE7617629224009C25F1 /* voies.svg */; };
+		55ED37461A23E1590006A100 /* Coin.png in Resources */ = {isa = PBXBuildFile; fileRef = 55ED37421A23E1590006A100 /* Coin.png */; };
+		55ED37471A23E1590006A100 /* Coin.png in Resources */ = {isa = PBXBuildFile; fileRef = 55ED37421A23E1590006A100 /* Coin.png */; };
+		55ED37481A23E1590006A100 /* Coin.png in Resources */ = {isa = PBXBuildFile; fileRef = 55ED37421A23E1590006A100 /* Coin.png */; };
+		55ED37581A23E16B0006A100 /* Coins.svg in Resources */ = {isa = PBXBuildFile; fileRef = 55ED37571A23E16B0006A100 /* Coins.svg */; };
+		55ED375B1A23E1AA0006A100 /* sakamura-default-fill-opacity-test.svg in Resources */ = {isa = PBXBuildFile; fileRef = 55ED37591A23E1AA0006A100 /* sakamura-default-fill-opacity-test.svg */; };
+		55ED375C1A23E1AA0006A100 /* simple-viewbox-test.svg in Resources */ = {isa = PBXBuildFile; fileRef = 55ED375A1A23E1AA0006A100 /* simple-viewbox-test.svg */; };
+		55ED375E1A23E2240006A100 /* MathCurve-optimized.svg in Resources */ = {isa = PBXBuildFile; fileRef = 55ED375D1A23E2240006A100 /* MathCurve-optimized.svg */; };
+		55ED37601A23E2320006A100 /* map-alaska-onlysimple.svg in Resources */ = {isa = PBXBuildFile; fileRef = 55ED375F1A23E2320006A100 /* map-alaska-onlysimple.svg */; };
+		55ED37641A23E2630006A100 /* ImageAspectRatio.svg in Resources */ = {isa = PBXBuildFile; fileRef = 55ED37611A23E2630006A100 /* ImageAspectRatio.svg */; };
+		55ED37651A23E2630006A100 /* imagetag-layer2-sun.svg in Resources */ = {isa = PBXBuildFile; fileRef = 55ED37621A23E2630006A100 /* imagetag-layer2-sun.svg */; };
+		55ED37661A23E2630006A100 /* imagetag-layered.svg in Resources */ = {isa = PBXBuildFile; fileRef = 55ED37631A23E2630006A100 /* imagetag-layered.svg */; };
+		55ED37681A23E2730006A100 /* fillrule-evenodd.svg in Resources */ = {isa = PBXBuildFile; fileRef = 55ED37671A23E2730006A100 /* fillrule-evenodd.svg */; };
+		55ED376A1A23E2940006A100 /* BlankMap-World6-Equirectangular.svg in Resources */ = {isa = PBXBuildFile; fileRef = 55ED37691A23E2940006A100 /* BlankMap-World6-Equirectangular.svg */; };
+		55ED376B1A23E4070006A100 /* Coins.svg in Resources */ = {isa = PBXBuildFile; fileRef = 55ED37571A23E16B0006A100 /* Coins.svg */; };
+		55ED376C1A23E4070006A100 /* Coins.svg in Resources */ = {isa = PBXBuildFile; fileRef = 55ED37571A23E16B0006A100 /* Coins.svg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -291,6 +306,20 @@
 		55D8EE7417629224009C25F1 /* Text.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Text.svg; sourceTree = "<group>"; };
 		55D8EE7517629224009C25F1 /* uk-only.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "uk-only.svg"; sourceTree = "<group>"; };
 		55D8EE7617629224009C25F1 /* voies.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = voies.svg; sourceTree = "<group>"; };
+		55ED37421A23E1590006A100 /* Coin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Coin.png; sourceTree = "<group>"; };
+		55ED37431A23E1590006A100 /* Monkey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Monkey.png; sourceTree = "<group>"; };
+		55ED37441A23E1590006A100 /* Note.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Note.png; sourceTree = "<group>"; };
+		55ED37451A23E1590006A100 /* Snowman.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Snowman.png; sourceTree = "<group>"; };
+		55ED37571A23E16B0006A100 /* Coins.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Coins.svg; sourceTree = "<group>"; };
+		55ED37591A23E1AA0006A100 /* sakamura-default-fill-opacity-test.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "sakamura-default-fill-opacity-test.svg"; sourceTree = "<group>"; };
+		55ED375A1A23E1AA0006A100 /* simple-viewbox-test.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "simple-viewbox-test.svg"; sourceTree = "<group>"; };
+		55ED375D1A23E2240006A100 /* MathCurve-optimized.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "MathCurve-optimized.svg"; sourceTree = "<group>"; };
+		55ED375F1A23E2320006A100 /* map-alaska-onlysimple.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "map-alaska-onlysimple.svg"; sourceTree = "<group>"; };
+		55ED37611A23E2630006A100 /* ImageAspectRatio.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ImageAspectRatio.svg; sourceTree = "<group>"; };
+		55ED37621A23E2630006A100 /* imagetag-layer2-sun.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "imagetag-layer2-sun.svg"; sourceTree = "<group>"; };
+		55ED37631A23E2630006A100 /* imagetag-layered.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "imagetag-layered.svg"; sourceTree = "<group>"; };
+		55ED37671A23E2730006A100 /* fillrule-evenodd.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "fillrule-evenodd.svg"; sourceTree = "<group>"; };
+		55ED37691A23E2940006A100 /* BlankMap-World6-Equirectangular.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "BlankMap-World6-Equirectangular.svg"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -384,6 +413,7 @@
 		55D8EE1B17628A71009C25F1 = {
 			isa = PBXGroup;
 			children = (
+				55D8EE4417628B56009C25F1 /* SVGKit.xcodeproj */,
 				55D8EE5017629223009C25F1 /* SVG */,
 				55D8EE2D17628A71009C25F1 /* Demo-OSX */,
 				55CB786C176BE36F00BD97F1 /* ImageRep-Demo */,
@@ -407,7 +437,6 @@
 		55D8EE2617628A71009C25F1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				55D8EE4417628B56009C25F1 /* SVGKit.xcodeproj */,
 				55C362CA1782208700BA24FA /* QuartzCore.framework */,
 				55D8EE2717628A71009C25F1 /* Cocoa.framework */,
 				55D8EE2917628A71009C25F1 /* Other Frameworks */,
@@ -456,18 +485,27 @@
 		55D8EE5017629223009C25F1 /* SVG */ = {
 			isa = PBXGroup;
 			children = (
+				55ED37411A23E1590006A100 /* Bitmap */,
 				55D8EE5117629224009C25F1 /* apache-licensed-from-svg-android */,
 				55D8EE5717629224009C25F1 /* australia_states_blank.svg */,
 				55D8EE5817629224009C25F1 /* Blank_Map-Africa.svg */,
+				55ED37691A23E2940006A100 /* BlankMap-World6-Equirectangular.svg */,
 				55D8EE5917629224009C25F1 /* breaking-1.svg */,
+				55ED37571A23E16B0006A100 /* Coins.svg */,
 				55D8EE5A17629224009C25F1 /* CurvedDiamond.svg */,
 				55D8EE5B17629224009C25F1 /* Europe_states_reduced.svg */,
+				55ED37671A23E2730006A100 /* fillrule-evenodd.svg */,
 				55D8EE5C17629224009C25F1 /* g-element-applies-rotation.svg */,
 				55D8EE5D17629224009C25F1 /* groups-and-layers-test.svg */,
+				55ED37611A23E2630006A100 /* ImageAspectRatio.svg */,
+				55ED37621A23E2630006A100 /* imagetag-layer2-sun.svg */,
+				55ED37631A23E2630006A100 /* imagetag-layered.svg */,
 				55D8EE5E17629224009C25F1 /* imageWithASinglePointPath.svg */,
 				55D8EE5F17629224009C25F1 /* Lion.svg */,
 				55D8EE6017629224009C25F1 /* Location_European_nation_states.svg */,
+				55ED375F1A23E2320006A100 /* map-alaska-onlysimple.svg */,
 				55D8EE6117629224009C25F1 /* Map.svg */,
+				55ED375D1A23E2240006A100 /* MathCurve-optimized.svg */,
 				55D8EE6317629224009C25F1 /* Monkey.svg */,
 				55D8EE6417629224009C25F1 /* Note.svg */,
 				55D8EE6517629224009C25F1 /* RainbowWing.svg */,
@@ -475,6 +513,8 @@
 				55D8EE6717629224009C25F1 /* Reinel_compass_rose.svg */,
 				55D8EE6817629224009C25F1 /* rotated-and-skewed-text.svg */,
 				55D8EE6917629224009C25F1 /* rounded-rects.svg */,
+				55ED37591A23E1AA0006A100 /* sakamura-default-fill-opacity-test.svg */,
+				55ED375A1A23E1AA0006A100 /* simple-viewbox-test.svg */,
 				55D8EE6A17629224009C25F1 /* svg spec examples */,
 				55D8EE7117629224009C25F1 /* svg-with-explicit-width-large.svg */,
 				55D8EE7217629224009C25F1 /* svg-with-explicit-width.svg */,
@@ -511,6 +551,18 @@
 			);
 			path = "svg spec examples";
 			sourceTree = "<group>";
+		};
+		55ED37411A23E1590006A100 /* Bitmap */ = {
+			isa = PBXGroup;
+			children = (
+				55ED37421A23E1590006A100 /* Coin.png */,
+				55ED37431A23E1590006A100 /* Monkey.png */,
+				55ED37441A23E1590006A100 /* Note.png */,
+				55ED37451A23E1590006A100 /* Snowman.png */,
+			);
+			name = Bitmap;
+			path = "Demo-Samples/Bitmap";
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -666,8 +718,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55ED37481A23E1590006A100 /* Coin.png in Resources */,
 				55C8982119F335B30035BD69 /* Images.xcassets in Resources */,
 				55C8982419F335B30035BD69 /* Main.storyboard in Resources */,
+				55ED376C1A23E4070006A100 /* Coins.svg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -675,6 +729,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55ED37471A23E1590006A100 /* Coin.png in Resources */,
+				55ED376B1A23E4070006A100 /* Coins.svg in Resources */,
 				55CB7879176BE36F00BD97F1 /* Credits.rtf in Resources */,
 				55CB787A176BE36F00BD97F1 /* InfoPlist.strings in Resources */,
 				55CB787B176BE36F00BD97F1 /* MainMenu.xib in Resources */,
@@ -688,15 +744,19 @@
 				55D8EE3217628A71009C25F1 /* InfoPlist.strings in Resources */,
 				55D8EE3817628A71009C25F1 /* Credits.rtf in Resources */,
 				55D8EE3E17628A71009C25F1 /* MainMenu.xib in Resources */,
+				55ED37651A23E2630006A100 /* imagetag-layer2-sun.svg in Resources */,
 				55D8EE7717629224009C25F1 /* gradients.svg in Resources */,
 				55D8EE7917629224009C25F1 /* shapes.svg in Resources */,
 				55D8EE7A17629224009C25F1 /* strokes.svg in Resources */,
 				55D8EE7B17629224009C25F1 /* transformations.svg in Resources */,
 				55D8EE7C17629224009C25F1 /* australia_states_blank.svg in Resources */,
+				55ED375E1A23E2240006A100 /* MathCurve-optimized.svg in Resources */,
 				55D8EE7E17629224009C25F1 /* breaking-1.svg in Resources */,
 				55D8EE7F17629224009C25F1 /* CurvedDiamond.svg in Resources */,
+				55ED37461A23E1590006A100 /* Coin.png in Resources */,
 				55D8EE8017629224009C25F1 /* Europe_states_reduced.svg in Resources */,
 				55D8EE8117629224009C25F1 /* g-element-applies-rotation.svg in Resources */,
+				55ED37681A23E2730006A100 /* fillrule-evenodd.svg in Resources */,
 				55D8EE8217629224009C25F1 /* groups-and-layers-test.svg in Resources */,
 				55D8EE8317629224009C25F1 /* imageWithASinglePointPath.svg in Resources */,
 				55D8EE8417629224009C25F1 /* Lion.svg in Resources */,
@@ -707,9 +767,15 @@
 				55D8EE8A17629224009C25F1 /* RainbowWing.svg in Resources */,
 				55D8EE8B17629224009C25F1 /* Reinel_compass_rose-simplified-for-testing.svg in Resources */,
 				55D8EE8C17629224009C25F1 /* Reinel_compass_rose.svg in Resources */,
+				55ED375C1A23E1AA0006A100 /* simple-viewbox-test.svg in Resources */,
+				55ED37581A23E16B0006A100 /* Coins.svg in Resources */,
+				55ED37601A23E2320006A100 /* map-alaska-onlysimple.svg in Resources */,
 				55D8EE8D17629224009C25F1 /* rotated-and-skewed-text.svg in Resources */,
+				55ED375B1A23E1AA0006A100 /* sakamura-default-fill-opacity-test.svg in Resources */,
 				55D8EE8E17629224009C25F1 /* rounded-rects.svg in Resources */,
 				55D8EE8F17629224009C25F1 /* lingrad01.svg in Resources */,
+				55ED37661A23E2630006A100 /* imagetag-layered.svg in Resources */,
+				55ED37641A23E2630006A100 /* ImageAspectRatio.svg in Resources */,
 				55D8EE9017629224009C25F1 /* opacity01.svg in Resources */,
 				55D8EE9117629224009C25F1 /* PreserveAspectRatio.svg in Resources */,
 				55D8EE9217629224009C25F1 /* StyleAttribute.svg in Resources */,
@@ -718,6 +784,7 @@
 				55D8EE9517629224009C25F1 /* svg-with-explicit-width-large.svg in Resources */,
 				55D8EE9617629224009C25F1 /* svg-with-explicit-width.svg in Resources */,
 				55D8EE9717629224009C25F1 /* test-wave-1.svg in Resources */,
+				55ED376A1A23E2940006A100 /* BlankMap-World6-Equirectangular.svg in Resources */,
 				55D8EE9817629224009C25F1 /* Text.svg in Resources */,
 				55D8EE9917629224009C25F1 /* uk-only.svg in Resources */,
 				55D8EE9A17629224009C25F1 /* voies.svg in Resources */,

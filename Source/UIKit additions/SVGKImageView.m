@@ -5,7 +5,7 @@
 @dynamic image;
 @synthesize showBorder = _showBorder;
 
-- (id)init
+- (instancetype)init
 {
 	if( [self class] == [SVGKImageView class])
 	{
@@ -17,7 +17,7 @@
 		return [super init];
 }
 
--(id)initWithFrame:(CGRect)frame
+-(instancetype)initWithFrame:(CGRect)frame
 {
 	if( [self class] == [SVGKImageView class])
 	{
@@ -29,7 +29,7 @@
 		return [super initWithFrame:frame];
 }
 
-- (id)initWithCoder:(NSCoder *)aDecoder
+- (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
 	if( [self class] == [SVGKImageView class])
 	{
@@ -41,7 +41,7 @@
 		return [super initWithCoder:aDecoder];
 }
 
-- (id)initWithSVGKImage:(SVGKImage*) im
+- (instancetype)initWithSVGKImage:(SVGKImage*) im
 {
 	NSAssert(false, @"Your subclass implementation is broken, it should be calling [super init] not [super initWithSVGKImage:]. Instead, use a subclass e.g. SVGKFastImageView");
     

@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="12F37" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment defaultVersion="1072" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailViewController">
@@ -20,48 +19,62 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" id="25">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" translatesAutoresizingMaskIntoConstraints="NO" id="25">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
-                        <view contentMode="scaleToFill" id="26" customClass="SVGKFastImageView">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="26" customClass="SVGKFastImageView">
                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                     </subviews>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="65"/>
                     </connections>
                 </scrollView>
-                <view contentMode="scaleToFill" id="NFk-6v-xaP">
-                    <rect key="frame" x="60" y="232" width="200" height="105"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NFk-6v-xaP">
+                    <rect key="frame" x="62" y="226" width="197" height="116"/>
                     <subviews>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Loading, please wait" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="38">
-                            <rect key="frame" x="11" y="15" width="179" height="21"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Loading, please wait" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="38">
+                            <rect key="frame" x="20" y="20" width="158" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" id="FNy-0k-7Zu">
-                            <rect key="frame" x="25" y="44" width="150" height="2"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="FNy-0k-7Zu">
+                            <rect key="frame" x="20" y="49" width="158" height="2"/>
                         </progressView>
-                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" animating="YES" style="whiteLarge" id="45">
-                            <rect key="frame" x="82" y="54" width="37" height="37"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="45">
+                            <rect key="frame" x="80" y="59" width="37" height="37"/>
                         </activityIndicatorView>
                     </subviews>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="38" firstAttribute="leading" secondItem="NFk-6v-xaP" secondAttribute="leading" constant="20" symbolic="YES" id="0oC-5c-yFP"/>
+                        <constraint firstItem="FNy-0k-7Zu" firstAttribute="top" secondItem="38" secondAttribute="bottom" constant="8" symbolic="YES" id="7ca-Zq-LAW"/>
+                        <constraint firstAttribute="centerX" secondItem="45" secondAttribute="centerX" id="F8n-Xd-RN6"/>
+                        <constraint firstItem="45" firstAttribute="top" secondItem="FNy-0k-7Zu" secondAttribute="bottom" constant="8" symbolic="YES" id="QGs-6w-VoX"/>
+                        <constraint firstAttribute="centerX" secondItem="38" secondAttribute="centerX" id="bCq-cJ-Pb7"/>
+                        <constraint firstItem="38" firstAttribute="top" secondItem="NFk-6v-xaP" secondAttribute="top" constant="20" symbolic="YES" id="fMf-t9-qes"/>
+                        <constraint firstAttribute="bottom" secondItem="45" secondAttribute="bottom" constant="20" symbolic="YES" id="q12-rA-B17"/>
+                        <constraint firstItem="38" firstAttribute="trailing" secondItem="FNy-0k-7Zu" secondAttribute="trailing" id="tqX-m2-WAF"/>
+                        <constraint firstItem="38" firstAttribute="leading" secondItem="FNy-0k-7Zu" secondAttribute="leading" id="zPk-b3-vei"/>
+                    </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="25" secondAttribute="bottom" id="Gel-TK-AKX"/>
+                <constraint firstAttribute="centerY" secondItem="NFk-6v-xaP" secondAttribute="centerY" id="Lrd-7Z-HyW"/>
+                <constraint firstAttribute="centerX" secondItem="NFk-6v-xaP" secondAttribute="centerX" id="VHw-Q5-Djb"/>
+                <constraint firstItem="25" firstAttribute="top" secondItem="1" secondAttribute="top" id="XDM-jB-EoD"/>
+                <constraint firstAttribute="trailing" secondItem="25" secondAttribute="trailing" id="ufI-i5-LYt"/>
+                <constraint firstItem="25" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="v0s-TW-4X0"/>
+            </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
 </document>

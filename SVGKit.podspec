@@ -2,7 +2,9 @@ Pod::Spec.new do |s|
   s.name        = 'SVGKit'
   s.version     = '2.x'
   s.license     = 'MIT'
-  s.platform    = :ios, '6.0'
+  s.ios.deployment_target = "8.0"
+  s.osx.deployment_target = "10.9"
+
   s.summary     = "Display and interact with SVG Images on iOS, using native rendering (CoreAnimation)."
   s.homepage = 'https://github.com/SVGKit/SVGKit'
   s.author   = { 'Steven Fusco'    => 'github@stevenfusco.com',
@@ -15,13 +17,17 @@ Pod::Spec.new do |s|
                  'Steven Fusco'    => 'sfusco@spiral.local',
                  'Eric Man'        => 'Eric@eric-mans-macbook-2.local',
                  'C.W. Betts'      => 'computers57@hotmail.com' }
-  s.source   = { :git => 'https://github.com/MaddTheSane/SVGKit.git', :branch => "cleanup" }
+  s.source   = { :git => 'https://github.com/MaddTheSane/SVGKit.git', :branch => "master" }
 
-  s.ios.source_files = 'Source/*{.h,m}', 'Source/DOM classes/**/*.{h,m}', 'Source/Exporters/*.{h,m}', 'Source/Parsers/**/*.{h,m}', 'Source/QuartzCore additions/**/*.{h,m}', 'Source/Sources/**/*.{h,m}', 'Source/UIKit additions/**/*.{h,m}', 'Source/Unsorted/**/*.{h,m}'
+  s.ios.source_files = 'Source/*{.h,m}', 'Source/DOM classes/**/*.{h,m}', 'Source/Exporters/*.{h,m}', 'Source/Parsers/**/*.{h,m}', 'Source/QuartzCore additions/**/*.{h,m}', 'Source/Sources/**/*.{h,m}', 'Source/UIKit additions/**/*.{h,m}', 'Source/Shared additions/**/*.{h,m}', 'Source/Unsorted/**/*.{h,m}', 'Source/AppKit additions/*View*.h'
+  s.osx.source_files = 'Source/*{.h,m}', 'Source/DOM classes/**/*.{h,m}', 'Source/Exporters/*.{h,m}', 'Source/Parsers/**/*.{h,m}', 'Source/QuartzCore additions/**/*.{h,m}', 'Source/Sources/**/*.{h,m}', 'Source/Shared additions/**/*.{h,m}', 'Source/AppKit additions/**/*.{h,m}', 'Source/Unsorted/**/*.{h,m}'
+
   s.libraries = 'xml2'
   s.framework = 'QuartzCore', 'CoreText'
   s.dependency 'CocoaLumberjack'
-  s.prefix_header_file = 'XCodeProjectData/SVGKit-iOS/SVGKit-iOS-Prefix.pch'
+  s.ios.prefix_header_file = 'XCodeProjectData/SVGKit-iOS/SVGKit-iOS-Prefix.pch'
+  s.osx.prefix_header_file = 'XCodeProjectData/SVGKit-OSX/SVGKit-OSX-Prefix.pch'
+
   s.requires_arc = true
   s.xcconfig = {
     'CLANG_CXX_LANGUAGE_STANDARD' => 'gnu++11',

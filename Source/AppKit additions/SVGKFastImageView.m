@@ -125,29 +125,34 @@ static dispatch_once_t textOkayWarnOnce;
 }
 #endif
 
-- (id)init
+- (instancetype)init
 {
 	NSAssert(false, @"init not supported, use initWithSVGKImage:");
 	
 	return nil;
 }
 
-- (id)initWithCoder:(NSCoder *)aDecoder
+- (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
-	return [self initWithSVGKImage:nil frame:CGRectZero];
+    if (self = [super initWithCoder:aDecoder]) {
+        self.image = [SVGKImage defaultImage];
+        self.tileRatio = CGSizeZero;
+    }
+    
+    return self;
 }
 
--(id)initWithFrame:(NSRect)frame
+-(instancetype)initWithFrame:(NSRect)frame
 {
 	return [self initWithSVGKImage:nil frame:frame];
 }
 
-- (id)initWithSVGKImage:(SVGKImage*) im
+- (instancetype)initWithSVGKImage:(SVGKImage*) im
 {
 	return [self initWithSVGKImage:im frame:CGRectZero];
 }
 
-- (id)initWithSVGKImage:(SVGKImage*)im frame:(NSRect)theFrame
+- (instancetype)initWithSVGKImage:(SVGKImage*)im frame:(NSRect)theFrame
 {
 	if( im == nil )
 	{

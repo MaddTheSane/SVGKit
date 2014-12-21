@@ -59,12 +59,22 @@
     return nil;
 }
 
+- (void)generateObservers
+{
+    /** other obeservers */
+    [self addObserver:self forKeyPath:@"image" options:NSKeyValueObservingOptionNew context:(__bridge void *)(internalContextPointerBecauseApplesDemandsIt)];
+    [self addObserver:self forKeyPath:@"tileRatio" options:NSKeyValueObservingOptionNew context:(__bridge void *)(internalContextPointerBecauseApplesDemandsIt)];
+    [self addObserver:self forKeyPath:@"showBorder" options:NSKeyValueObservingOptionNew context:(__bridge void *)(internalContextPointerBecauseApplesDemandsIt)];
+}
+
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
 	self = [super initWithCoder:aDecoder];
     if( self )
     {
+		self.backgroundColor = [UIColor clearColor];
         [self populateFromImage:nil];
+        [self generateObservers];
     }
     return self;
 }
@@ -76,6 +86,7 @@
 	{
 		self.backgroundColor = [UIColor clearColor];
         [self populateFromImage:nil];
+        [self generateObservers];
 	}
 	return self;
 }
@@ -85,7 +96,11 @@
     self = [super init];
     if (self)
 	{
+		// Remove the old, internal redraw observers, because the populateFromImage will add them back in.
+		[self removeInternalRedrawOnResizeObservers];
+
         [self populateFromImage:im];
+        // Not generating observers here, as they should have been generated when the UIView superclass called initWithFrame
     }
     return self;
 }
@@ -106,22 +121,17 @@
     if( !imageIsGradientFree )
         DDLogWarn(@"[%@] WARNING: Apple's rendering DOES NOT ALLOW US to render this image correctly using SVGKFastImageView, because Apple's renderInContext method - according to Apple's docs - ignores Apple's own masking layers. Until Apple fixes this bug, you should use SVGKLayeredImageView for this particular SVG file (or avoid using gradients)", [self class]);
 #endif
-		
-		self.image = im;
-		self.frame = CGRectMake( 0,0, im.size.width, im.size.height ); // NB: this uses the default SVG Viewport; an ImageView can theoretically calc a new viewport (but its hard to get right!)
-		self.tileRatio = CGSizeZero;
-		self.backgroundColor = [UIColor clearColor];
-		
-		/** redraw-observers */
-		if( self.disableAutoRedrawAtHighestResolution )
-			;
-		else
-			[self addInternalRedrawOnResizeObservers];
-		
-		/** other obeservers */
-		[self addObserver:self forKeyPath:@"image" options:NSKeyValueObservingOptionNew context:(__bridge void *)(internalContextPointerBecauseApplesDemandsIt)];
-		[self addObserver:self forKeyPath:@"tileRatio" options:NSKeyValueObservingOptionNew context:(__bridge void *)(internalContextPointerBecauseApplesDemandsIt)];
-		[self addObserver:self forKeyPath:@"showBorder" options:NSKeyValueObservingOptionNew context:(__bridge void *)(internalContextPointerBecauseApplesDemandsIt)];
+    
+    self.image = im;
+    self.frame = CGRectMake( 0,0, im.size.width, im.size.height ); // NB: this uses the default SVG Viewport; an ImageView can theoretically calc a new viewport (but its hard to get right!)
+    self.tileRatio = CGSizeZero;
+    self.backgroundColor = [UIColor clearColor];
+    
+    /** redraw-observers */
+    if( self.disableAutoRedrawAtHighestResolution )
+        ;
+    else
+        [self addInternalRedrawOnResizeObservers];
 }
 
 - (void)setImage:(SVGKImage *)image {

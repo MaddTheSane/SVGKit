@@ -18,11 +18,15 @@
 
 #import "SVGKNode.h"
 
-@interface SVGKNodeList : NSObject <NSFastEnumeration>
+@interface SVGKNodeList : NSObject
 
 @property(readonly) long length;
 
 -(SVGKNode*) item:(NSInteger) index;
+
+@end
+
+@interface SVGKNodeList (CocoaExtensions) <NSFastEnumeration>
 
 - (SVGKNode*)objectAtIndexedSubscript:(NSInteger)idx;
 

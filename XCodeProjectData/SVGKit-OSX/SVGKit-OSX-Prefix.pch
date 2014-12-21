@@ -10,7 +10,7 @@
 	#import <Foundation/Foundation.h>
 	#import <Cocoa/Cocoa.h>
 	#import <QuartzCore/QuartzCore.h>
-	#import <Lumberjack/Lumberjack.h>
+	#import <CocoaLumberjack/CocoaLumberjack.h>
 	#if 0
 	static inline NSString *NSStringFromCGPoint(CGPoint thePoint)
 	{

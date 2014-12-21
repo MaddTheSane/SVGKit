@@ -71,12 +71,12 @@ typedef void (^SVGKImageAsynchronousLoadingDelegate)(SVGKImage* loadedImage);
  
  NB you can get MUCH BETTER performance using the methods such as exportUIImageAntiAliased and exportNSDataAntiAliased
  */
-@property (unsafe_unretained, nonatomic, readonly) CIImage *CIImage;
+@property (copy, nonatomic, readonly) CIImage *CIImage;
 #if (TARGET_OS_EMBEDDED || TARGET_OS_IPHONE)
-@property (unsafe_unretained, nonatomic, readonly) UIImage* UIImage;
+@property (copy, nonatomic, readonly) UIImage* UIImage;
 #else
-@property (unsafe_unretained, nonatomic, readonly) NSImage *NSImage;
-@property (unsafe_unretained, nonatomic, readonly) NSBitmapImageRep *bitmapImageRep;
+@property (copy, nonatomic, readonly) NSImage *NSImage;
+@property (copy, nonatomic, readonly) NSBitmapImageRep *bitmapImageRep;
 #endif
 
 @property (nonatomic, strong, readonly) SVGKSource* source;

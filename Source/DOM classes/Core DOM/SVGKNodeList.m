@@ -19,11 +19,6 @@
 	return (self.internalArray)[index];
 }
 
-- (SVGKNode*)objectAtIndexedSubscript:(NSInteger)idx
-{
-    return [self item:idx];
-}
-
 -(long)length
 {
 	return [self.internalArray count];
@@ -34,6 +29,11 @@
 -(NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state objects:(id __unsafe_unretained [])buffer count:(NSUInteger)len
 {
 	return [self.internalArray countByEnumeratingWithState:state objects:buffer count:len];
+}
+
+- (SVGKNode*)objectAtIndexedSubscript:(NSInteger)idx
+{
+    return [self item:idx];
 }
 
 #pragma mark - ADDITIONAL to SVG Spec: useful debug / output / description methods

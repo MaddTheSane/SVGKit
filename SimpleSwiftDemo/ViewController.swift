@@ -10,19 +10,17 @@ import UIKit
 import SVGKit
 
 class ViewController: UIViewController {
-    @IBOutlet var svgkView: SVGKFastImageView?
-    
+	@IBOutlet var svgkView: SVGKFastImageView?
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
-        svgkView?.image = SVGKImage(named: "Coins")
+		svgkView?.image = SVGKImage(named: "Coins")
 	}
-
+	
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
 		// Dispose of any resources that can be recreated.
 	}
-
-
 }
 
