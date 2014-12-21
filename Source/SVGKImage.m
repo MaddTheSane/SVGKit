@@ -8,7 +8,6 @@
 #import "SVGTitleElement.h"
 #import "SVGPathElement.h"
 #import "SVGUseElement.h"
-#import "SVGGElement.h"
 
 #import "SVGSVGElement_Mutable.h" // so that changing .size can change the SVG's .viewport
 
@@ -683,13 +682,8 @@
 	 */
 
 	NSUInteger sublayerCount = 0;
-	
-	if (![element isKindOfClass:[SVGClipPathElement class]])
-	{
 	for (SVGElement *child in childNodes )
 	{
-		
-		
 		if ([child conformsToProtocol:@protocol(ConverterSVGToCALayer)]) {
 			
 			CALayer *sublayer = [self newLayerWithElement:(SVGElement<ConverterSVGToCALayer> *)child];
@@ -698,61 +692,10 @@
 				continue;
 			}
 			
-            
-            
 			sublayerCount++;
-            
-            if (child && ![child isKindOfClass:[SVGClipPathElement class]])
-			{
-
-				if ([child clipPathIdentifier] )//&& [child isKindOfClass:[SVGGElement class]])
-				{
-					
-					CAShapeLayer *clipLayer = [self clipPathLayerWithIdentifier:[(SVGPathElement *)child clipPathIdentifier]];
-//					if (clipLayer)
-//						NSLog(@"Success!!");
-//					else
-//						NSLog(@"Bummer!");
-					
-					sublayer.mask = clipLayer;
-					//[(CAShapeLayer *)sublayer setStrokeColor:[[NSColor redColor] CGColor]];
-				}
-				
-//				if ([child isKindOfClass:[SVGGElement class]])
-//				{
-//					NSLog(@"Element Title: %@", [child identifier]);
-//				}
-				
-                [layer addSublayer:sublayer];
-			}
-            else
-            {
-				//Make sure that the layer is filled!
-				
-				[[sublayer sublayers] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-					
-					
-					if ([obj isKindOfClass:[CAShapeLayer class]])
-					{
-						CAShapeLayer *maskLayer = (CAShapeLayer *)obj;
-						[maskLayer setFillColor:[[NSColor blackColor] CGColor]];
-						[maskLayer setStrokeColor:[[NSColor blackColor] CGColor]];
-						[maskLayer setContents:[NSColor clearColor]];
-					}
-					
-				}];
-//				[layer addSublayer:sublayer];
-//				[sublayer setZPosition:100];
-				[sublayer setContents:[NSColor clearColor]];
-				[sublayer setBackgroundColor:[[NSColor clearColor] CGColor]];
-				[[self clipPathLayerArray] addObject:sublayer];
-
-				
-            }
+			[layer addSublayer:sublayer];
 		}
 	}
-	}
-	
 	
 	/**
 	 If none of the child nodes return a CALayer, we're safe to early-out here (and in fact we need to because
@@ -760,8 +703,6 @@
 	 there may be some nodes like whitespace nodes for which we don't create layers.
 	 */
 	if ( sublayerCount < 1 ) {
-//		if ([[layer name] isEqualToString:@"SVGID_2_"])
-//			printf("Layer %s's frame is: %s\n", [(CALayer *)layer name].UTF8String ,NSStringFromRect([layer frame]).UTF8String);
 		return layer;
 	}
 	
