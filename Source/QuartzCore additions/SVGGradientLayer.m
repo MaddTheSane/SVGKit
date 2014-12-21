@@ -7,7 +7,6 @@
 //
 
 #import "SVGGradientLayer.h"
-#import "CALayerWithClipRender.h"
 #include <tgmath.h>
 
 @interface SVGGradientLayer()

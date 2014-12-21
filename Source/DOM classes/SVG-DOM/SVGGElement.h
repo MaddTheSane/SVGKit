@@ -24,9 +24,4 @@
 
 @interface SVGGElement : SVGElement <SVGTransformable, SVGStylable, ConverterSVGToCALayer >
 
-@property (readwrite, strong) NSMutableArray *clipPathArray;
-@property (readwrite, copy) NSString *clipPathIdentifier;
-
-- (CAShapeLayer *)shapeLayerWithID:(NSString *)SVGElementID;
-
 @end
