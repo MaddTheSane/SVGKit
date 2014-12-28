@@ -4,9 +4,11 @@
 #endif
 
 #if IS_ALSO_LUMBERJACK_LOG_LEVEL
-extern int ddLogLevel CA_HIDDEN;
+extern NSUInteger ddLogLevel CA_HIDDEN;
 #else
-int SVGCurrentLogLevel() CA_HIDDEN;
+NSUInteger SVGCurrentLogLevel() CA_HIDDEN;
 #define ddLogLevel SVGCurrentLogLevel()
 #endif
+
+
 

@@ -274,8 +274,8 @@ SVGColor SVGColorFromString (const char *string) {
 	
 	color.a = 0xFF;
 	if (!strncmp(string, "url", 4)) {
-		DDLogCWarn(@"%s: WARNING: Unable to get an SVG color from a url (most likely a pattern)", __FUNCTION__);
-		DDLogCInfo(@"%s: INFO: returning a black SVG color", __FUNCTION__);
+		DDLogWarn(@"%s: WARNING: Unable to get an SVG color from a url (most likely a pattern)", __FUNCTION__);
+		DDLogInfo(@"%s: INFO: returning a black SVG color", __FUNCTION__);
 		color = SVGColorMake(0, 0, 0, 255);
 	} else if (!strncmp(string, "rgb(", 4)) {
 		size_t len = strlen(string);
@@ -379,7 +379,7 @@ CGFloat SVGPercentageFromString (const char *string) {
 	size_t len = strlen(string);
 	
 	if (string[len-1] != '%') {
-		DDLogCWarn(@"Invalid percentage: %s", string);
+		DDLogWarn(@"Invalid percentage: %s", string);
 		return -1;
 	}
 	

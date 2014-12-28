@@ -14,7 +14,6 @@
 #import "SVGKImageRep.h"
 #import "SVGKImageRep-private.h"
 #import "SVGKImage-private.h"
-#import <CocoaLumberjack/CocoaLumberjack.h>
 #import "SVGKImage+CGContext.h"
 #import "BlankSVG.h"
 #include <tgmath.h>

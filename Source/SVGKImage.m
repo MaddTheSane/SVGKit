@@ -127,7 +127,7 @@
 	if( pathToFileInBundle == nil
 	   && pathToFileInDocumentsFolder == nil )
 	{
-		DDLogCWarn(@"[%@] MISSING FILE (not found in App-bundle, not found in Documents folder), COULD NOT CREATE DOCUMENT: filename = %@, extension = %@", [self class], newName, extension);
+		DDLogWarn(@"[%@] MISSING FILE (not found in App-bundle, not found in Documents folder), COULD NOT CREATE DOCUMENT: filename = %@, extension = %@", [self class], newName, extension);
 		return nil;
 	}
 	
@@ -786,7 +786,7 @@ static inline NSString *exceptionInfo(NSException *e)
 	debugStr = [NSString stringWithFormat:@", call stack symbols: %@",e.callStackSymbols];
 #endif
 	
-	return [NSString stringWithFormat:@"Exception name: \"%@\" reason: %@%@", e.name, e.reason, (ddLogLevel & LOG_FLAG_INFO) == LOG_FLAG_INFO ? debugStr : @""];
+	return [NSString stringWithFormat:@"Exception name: \"%@\" reason: %@%@", e.name, e.reason, (ddLogLevel & DDLogFlagInfo) == DDLogFlagInfo ? debugStr : @""];
 }
 
 -(CALayer *)CALayerTree

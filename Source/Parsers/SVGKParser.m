@@ -619,7 +619,7 @@ static void startElementSAX (void *ctx, const xmlChar *localname, const xmlChar 
 	
 #if DEBUG_XML_PARSER
 #if DEBUG_VERBOSE_LOG_EVERY_TAG
-	DDLogCWarn(@"[%@] DEBUG_VERBOSE: <%@%@> (namespace URL:%@), attributes: %i", [NSctx class], [NSString stringWithFormat:@"%@:",stringPrefix], name, stringURI, nb_attributes );
+	DDLogWarn(@"[%@] DEBUG_VERBOSE: <%@%@> (namespace URL:%@), attributes: %i", [NSctx class], [NSString stringWithFormat:@"%@:",stringPrefix], name, stringURI, nb_attributes );
 #endif
 #endif
 	
@@ -640,18 +640,18 @@ static void startElementSAX (void *ctx, const xmlChar *localname, const xmlChar 
 		{
 			for( int i=0; i<nb_namespaces; i++ )
 			{
-				DDLogCWarn(@"[%@] DEBUG: found namespace [%i] : %@", [self class], i, namespaces[i] );
+				DDLogWarn(@"[%@] DEBUG: found namespace [%i] : %@", [self class], i, namespaces[i] );
 			}
 		}
 		else
-			DDLogCWarn(@"[%@] DEBUG: there are ZERO namespaces!", [self class] );
+			DDLogWarn(@"[%@] DEBUG: there are ZERO namespaces!", [self class] );
 		 */
 	}
 #endif
 	
 	if( stringURI == nil && stringPrefix == nil )
 	{
-		DDLogCWarn(@"[%@] WARNING: Your input SVG contains tags that have no namespace, and your document doesn't define a default namespace. This is always incorrect - it means some of your SVG data will be ignored, and usually means you have a typo in there somewhere. Tag with no namespace: <%@>", [NSctx class], stringLocalName );
+		DDLogWarn(@"[%@] WARNING: Your input SVG contains tags that have no namespace, and your document doesn't define a default namespace. This is always incorrect - it means some of your SVG data will be ignored, and usually means you have a typo in there somewhere. Tag with no namespace: <%@>", [NSctx class], stringLocalName );
 	}
 
 	[NSctx handleStartElement:stringLocalName namePrefix:stringPrefix namespaceURI:stringURI attributeObjects:attributeObjects];
@@ -726,7 +726,7 @@ static void errorEncounteredSAX (void *ctx, const char *msg, ...) {
     errStr = [[NSString alloc] initWithFormat:@(msg) arguments:va];
     va_end(va);
 
-	DDLogCWarn(@"Error encountered during parse: %@", errStr);
+	DDLogWarn(@"Error encountered during parse: %@", errStr);
 	SVGKParseResult* parseResult = self.currentParseRun;
     
 	[parseResult addSAXError:[NSError errorWithDomain:@"SVG-SAX" code:1 userInfo:@{NSLocalizedDescriptionKey: errStr}]];
@@ -738,7 +738,7 @@ static void	unparsedEntityDeclaration(void * ctx,
 									 const xmlChar * systemId,
 									 const xmlChar * notationName)
 {
-	DDLogCWarn(@"Error: unparsed entity Decl");
+	DDLogWarn(@"Error: unparsed entity Decl");
 }
 
 static void structuredError		(void * userData, 

@@ -19,12 +19,16 @@ Pod::Spec.new do |s|
                  'C.W. Betts'      => 'computers57@hotmail.com' }
   s.source   = { :git => 'https://github.com/MaddTheSane/SVGKit.git', :branch => "master" }
 
-  s.ios.source_files = 'Source/*{.h,m}', 'Source/DOM classes/**/*.{h,m}', 'Source/Exporters/*.{h,m}', 'Source/Parsers/**/*.{h,m}', 'Source/QuartzCore additions/**/*.{h,m}', 'Source/Sources/**/*.{h,m}', 'Source/UIKit additions/**/*.{h,m}', 'Source/Shared additions/**/*.{h,m}', 'Source/Unsorted/**/*.{h,m}', 'Source/AppKit additions/*View*.h'
-  s.osx.source_files = 'Source/*{.h,m}', 'Source/DOM classes/**/*.{h,m}', 'Source/Exporters/*.{h,m}', 'Source/Parsers/**/*.{h,m}', 'Source/QuartzCore additions/**/*.{h,m}', 'Source/Sources/**/*.{h,m}', 'Source/Shared additions/**/*.{h,m}', 'Source/AppKit additions/**/*.{h,m}', 'Source/Unsorted/**/*.{h,m}'
+  s.ios.source_files = 'Source/*{.h,m}', 'Source/DOM classes/**/*.{h,m}', 'Source/Exporters/*.{h,m}', 'Source/Parsers/**/*.{h,m}', 'Source/QuartzCore additions/**/*.{h,m}', 'Source/Sources/**/*.{h,m}', 'Source/UIKit additions/**/*.{h,m}', 'Source/Shared additions/**/*.{h,m}', 'Source/Unsorted/**/*.{h,m}'
+  s.ios.exclude_files =  'Source/DOM classes/**/*{OSX}.{h,m}', 'Source/Exporters/SVGKExporterNSData.{h,m}'
+
+  s.osx.source_files = 'Source/*{.h,m}', 'Source/DOM classes/**/*.{h,m}', 'Source/Exporters/*.{h,m}', 'Source/Parsers/**/*.{h,m}', 'Source/QuartzCore additions/**/*.{h,m}', 'Source/Sources/**/*.{h,m}', 'Source/AppKit additions/**/*.{h,m}', 'Source/Shared additions/**/*.{h,m}', 'Source/Unsorted/**/*.{h,m}', 'Source/UIKit additions/*View*.h'
+  s.osx.exclude_files = 'Source/DOM classes/**/*{iOS}.{h,m}', 'Source/Exporters/SVGKExporterUIImage.{h,m}'
+
 
   s.libraries = 'xml2'
   s.framework = 'QuartzCore', 'CoreText'
-  s.dependency 'CocoaLumberjack'
+  s.dependency 'CocoaLumberjack', '~> 2.x'
   s.ios.prefix_header_file = 'XCodeProjectData/SVGKit-iOS/SVGKit-iOS-Prefix.pch'
   s.osx.prefix_header_file = 'XCodeProjectData/SVGKit-OSX/SVGKit-OSX-Prefix.pch'
 

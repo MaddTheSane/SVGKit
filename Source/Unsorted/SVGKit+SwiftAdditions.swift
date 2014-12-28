@@ -17,7 +17,7 @@ extension SVGKNodeList: SequenceType {
 extension SVGKImage {
 	public class var cacheEnabled: Bool {
 		get {
-		return isCacheEnabled()
+			return isCacheEnabled()
 		}
 		set {
 			if cacheEnabled == newValue {

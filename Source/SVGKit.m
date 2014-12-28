@@ -7,21 +7,20 @@
 //
 
 #import "SVGKit.h"
-#import "DDTTYLogger.h"
-#import "DDASLLogger.h"
+#import <CocoaLumberjack/CocoaLumberjack.h>
 
-#if DEBUG
-#define DEFAULT_LOG_LEVEL LOG_LEVEL_VERBOSE;
+#ifdef DEBUG
+static const DDLogLevel defaultLogLevel = DDLogLevelVerbose;
 #else
-#define DEFAULT_LOG_LEVEL LOG_LEVEL_WARN;
+static const DDLogLevel defaultLogLevel = DDLogLevelWarning;
 #endif
 
 #if IS_ALSO_LUMBERJACK_LOG_LEVEL
-int ddLogLevel = DEFAULT_LOG_LEVEL;
+NSUInteger ddLogLevel = defaultLogLevel;
 #define ddLogLevelInternal ddLogLevel
 #else
-static DDLogLevel ddLogLevelInternal = DEFAULT_LOG_LEVEL;
-int SVGCurrentLogLevel()
+static DDLogLevel ddLogLevelInternal = defaultLogLevel;
+NSUInteger SVGCurrentLogLevel()
 {
 	return ddLogLevelInternal;
 }
@@ -35,23 +34,23 @@ int SVGCurrentLogLevel()
 {
 	SVGKLoggingLevel retVal;
 	switch (ddLogLevelInternal) {
-		case LOG_LEVEL_ERROR:
+		case DDLogLevelError:
 			retVal = SVGKLoggingError;
 			break;
 			
-		case LOG_LEVEL_INFO:
+		case DDLogLevelInfo:
 			retVal = SVGKLoggingInfo;
 			break;
 			
-		case LOG_LEVEL_OFF:
+		case DDLogLevelOff:
 			retVal = SVGKLoggingOff;
 			break;
 			
-		case LOG_LEVEL_VERBOSE:
+		case DDLogLevelVerbose:
 			retVal = SVGKLoggingVerbose;
 			break;
 			
-		case LOG_LEVEL_WARN:
+		case DDLogLevelWarning:
 			retVal = SVGKLoggingWarning;
 			break;
 			
@@ -67,7 +66,7 @@ static dispatch_once_t rawLogLevelToken;
 NSLog(@"[%@] WARN: Only set/get the raw log level if you know what you're doing!", self); \
 })
 
-+ (int) rawLogLevelWithWarning:(BOOL)warn
++ (NSUInteger) rawLogLevelWithWarning:(BOOL)warn
 {
 	if (warn) {
 		RawLevelWarn();
@@ -76,12 +75,12 @@ NSLog(@"[%@] WARN: Only set/get the raw log level if you know what you're doing!
 	return ddLogLevel;
 }
 
-+ (int) rawLogLevel
++ (NSUInteger) rawLogLevel
 {
 	return [self rawLogLevelWithWarning:YES];
 }
 
-+ (void) setRawLogLevel:(int)rawLevel withWarning:(BOOL)warn
++ (void) setRawLogLevel:(NSUInteger)rawLevel withWarning:(BOOL)warn
 {
 #define LOGFLAGCHECK(theFlag, mutStr, logVal) \
 if ((logVal & theFlag) == theFlag) { \
@@ -97,39 +96,41 @@ if (mutStr.length == 0) { \
 		RawLevelWarn();
 	}
 	
-	if ((rawLevel & ~((int)LOG_LEVEL_VERBOSE)) != 0) {
-		int newLogLevel = rawLevel;
-		newLogLevel &= ((int)LOG_LEVEL_VERBOSE);
+	if ((rawLevel & ~((int)DDLogLevelVerbose)) != 0) {
+		NSUInteger newLogLevel = rawLevel;
+		newLogLevel &= ((int)DDLogLevelVerbose);
 		NSMutableString *valString = [[NSMutableString alloc] init];
 		
-		LOGFLAGCHECK(LOG_FLAG_VERBOSE, valString, newLogLevel);
-		LOGFLAGCHECK(LOG_FLAG_INFO, valString, newLogLevel);
-		LOGFLAGCHECK(LOG_FLAG_WARN, valString, newLogLevel);
-		LOGFLAGCHECK(LOG_FLAG_ERROR, valString, newLogLevel);
+		LOGFLAGCHECK(DDLogLevelVerbose, valString, newLogLevel);
+		LOGFLAGCHECK(DDLogLevelInfo, valString, newLogLevel);
+		LOGFLAGCHECK(DDLogLevelWarning, valString, newLogLevel);
+		LOGFLAGCHECK(DDLogLevelError, valString, newLogLevel);
 		if (valString.length == 0) {
 			[valString setString:@"LOG_LEVEL_OFF"];
 		}
-		LOG_OBJC_MAYBE(LOG_ASYNC_INFO, (ddLogLevelInternal | newLogLevel), LOG_FLAG_INFO, 0, @"[%@] WARN: The raw log level %i is invalid! The new raw log level is %i, or with the following flags: %@.", self, rawLevel, newLogLevel, valString);
+		
+		LOG_MAYBE(YES, (ddLogLevelInternal | newLogLevel), DDLogFlagInfo, 0, nil, sel_getName(_cmd), @"[%@] WARN: The raw log level %lu is invalid! The new raw log level is %lu, or with the following flags: %@.", self, (unsigned long)rawLevel, (unsigned long)newLogLevel, valString);
+
 		ddLogLevelInternal = newLogLevel;
-	}else {
+	} else {
 		NSMutableString *valStr = [[NSMutableString alloc] init];
 		
-		LOGFLAGCHECK(LOG_FLAG_VERBOSE, valStr, rawLevel);
-		LOGFLAGCHECK(LOG_FLAG_INFO, valStr, rawLevel);
-		LOGFLAGCHECK(LOG_FLAG_WARN, valStr, rawLevel);
-		LOGFLAGCHECK(LOG_FLAG_ERROR, valStr, rawLevel);
+		LOGFLAGCHECK(DDLogLevelVerbose, valStr, rawLevel);
+		LOGFLAGCHECK(DDLogLevelInfo, valStr, rawLevel);
+		LOGFLAGCHECK(DDLogLevelWarning, valStr, rawLevel);
+		LOGFLAGCHECK(DDLogLevelError, valStr, rawLevel);
 		if (valStr.length == 0) {
 			[valStr setString:@"LOG_LEVEL_OFF"];
 		}
 		
-		LOG_OBJC_MAYBE(LOG_ASYNC_VERBOSE, (ddLogLevelInternal | rawLevel), LOG_FLAG_VERBOSE, 0, @"[%@] DEBUG: Current raw debug level has been set at %i, or with the following flags: %@", self, rawLevel, valStr);
+		LOG_MAYBE(YES, (ddLogLevelInternal | rawLevel), DDLogFlagVerbose, 0, nil, sel_getName(_cmd), @"[%@] DEBUG: Current raw debug level has been set at %lu, or with the following flags: %@", [self class], (unsigned long)rawLevel, valStr);
 		
 		ddLogLevelInternal = rawLevel;
 	}
 #undef LOGFLAGCHECK
 }
 
-+ (void) setRawLogLevel:(int)rawLevel
++ (void) setRawLogLevel:(NSUInteger)rawLevel
 {
 	[self setRawLogLevel:rawLevel withWarning:YES];
 }
@@ -163,24 +164,24 @@ break
 			break;
 			
 		case SVGKLoggingError:
-			ddLogLevelInternal = LOG_LEVEL_ERROR;
+			ddLogLevelInternal = DDLogLevelError;
 			break;
 			
 		case SVGKLoggingInfo:
-			ddLogLevelInternal = LOG_LEVEL_INFO;
+			ddLogLevelInternal = DDLogLevelInfo;
 			break;
 			
 		case SVGKLoggingVerbose:
-			ddLogLevelInternal = LOG_LEVEL_VERBOSE;
+			ddLogLevelInternal = DDLogLevelVerbose;
 			break;
 			
 		case SVGKLoggingWarning:
-			ddLogLevelInternal = LOG_LEVEL_WARN;
+			ddLogLevelInternal = DDLogLevelWarning;
 			break;
 			
 		default:
 		case SVGKLoggingOff:
-			ddLogLevelInternal = LOG_LEVEL_OFF;
+			ddLogLevelInternal = DDLogLevelOff;
 			break;
 	}
 }

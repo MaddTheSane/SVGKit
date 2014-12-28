@@ -64,7 +64,7 @@ typedef NS_ENUM(int, SVGKLoggingLevel)
 + (void) setLogLevel:(SVGKLoggingLevel)newLevel;
 + (SVGKLoggingLevel) logLevel;
 
-+ (void) setRawLogLevel:(int)rawLevel;
-+ (int) rawLogLevel;
++ (void) setRawLogLevel:(NSUInteger)rawLevel;
++ (NSUInteger) rawLogLevel;
 
 @end
