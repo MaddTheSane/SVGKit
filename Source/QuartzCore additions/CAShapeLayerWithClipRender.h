@@ -10,4 +10,6 @@
 
 @interface CAShapeLayerWithClipRender : CAShapeLayer
 
+@property (readwrite, strong) NSString *clipPathIdentifier;
+
 @end

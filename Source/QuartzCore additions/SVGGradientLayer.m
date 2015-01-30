@@ -9,6 +9,12 @@
 #import "SVGGradientLayer.h"
 #include <tgmath.h>
 
+@interface SVGGradientLayer()
+
+@property (strong) CALayer *maskLayer;
+
+@end
+
 @implementation SVGGradientLayer
 
 @synthesize maskPath;
@@ -27,9 +33,19 @@
 }
 
 - (void)renderInContext:(CGContextRef)ctx {
-    CGContextSaveGState(ctx);
-    CGContextAddPath(ctx, maskPath);
+	
+	CGContextSaveGState(ctx);
+	
+	//Before we try to render the SVGGradientLayer, we need to remove the mask.
+	if (self.mask)
+	{
+		self.maskLayer = self.mask;
+		self.mask = nil;
+	}
+	
+	CGContextAddPath(ctx, maskPath);
     CGContextClip(ctx);
+
     if ([self.type isEqualToString:kExt_CAGradientLayerRadial]) {
         
         size_t num_locations = self.locations.count;
@@ -39,7 +55,7 @@
         CGContextConcatCTM(ctx, CGAffineTransformMake(1, 0, 0, 1, self.startPoint.x, self.startPoint.y));
         CGContextConcatCTM(ctx, self.transform);
         CGContextConcatCTM(ctx, CGAffineTransformMake(1, 0, 0, 1, -self.startPoint.x, -self.startPoint.y));
-        
+		
         if (self.colors.count) {
             CGColorRef colorRef = (__bridge CGColorRef)(self.colors)[0];
             numbOfComponents = CGColorGetNumberOfComponents(colorRef);
@@ -68,7 +84,15 @@
             CGGradientRelease(gradient);
         }
     } else {
+
         [super renderInContext:ctx];
+
+		if (self.maskLayer)
+		{
+			self.mask = self.maskLayer;
+			self.maskLayer = nil;
+		}
+
     }
     CGContextRestoreGState(ctx);
 }

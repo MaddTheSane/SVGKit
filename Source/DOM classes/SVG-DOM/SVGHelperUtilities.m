@@ -328,8 +328,22 @@
 	/** find out the ABSOLUTE BOUNDING BOX of our transformed path */
     //BIZARRE: Apple sometimes gives a different value for this even when transformAbsolute == identity! : CGRect localPathBB = CGPathGetPathBoundingBox( _pathRelative );
 	//DEBUG ONLY: CGRect unTransformedPathBB = CGPathGetBoundingBox( _pathRelative );
-	CGRect transformedPathBB = CGPathGetBoundingBox( pathToPlaceInLayer );
 
+    //This bounding box... if it's origin is not 0,0... then things will shift, No?  You are setting the frame, which then sets the position, which shifts things.
+    
+    CGRect transformedPathBB = CGPathGetBoundingBox( pathToPlaceInLayer );
+    
+    
+    
+    //Yose
+    if (isinf(transformedPathBB.origin.x))
+        transformedPathBB.origin.x = 0;
+    
+    if (isinf(transformedPathBB.origin.y))
+        transformedPathBB.origin.y = 0;
+    
+    //Integer manipulation is always quicker than floating point manipulation
+    
 #if IMPROVE_PERFORMANCE_BY_WORKING_AROUND_APPLE_FRAME_ALIGNMENT_BUG
 	transformedPathBB = CGRectIntegral( transformedPathBB ); // ridiculous but improves performance of apple's code by up to 50% !
 #endif
@@ -349,6 +363,10 @@
 	 NB: this line, by changing the FRAME of the layer, has the side effect of also changing the CGPATH's position in absolute
 	 space! This is why we needed the "CGPathRef finalPath =" line a few lines above...
 	 */
+    
+    //Yes...well.. if you are applying a non-zero Rect to .frame, you are going to shift everything.  perhaps you should set the frame the BB and then union that with
+    //the remaining space until Origin {0,0}
+    
 	_shapeLayer.frame = transformedPathBB;
 	
 	
@@ -460,7 +478,8 @@
 		
 		//if( _shapeLayer != nil && svgGradient != nil ) //this nil check here is distrubing but blocking
 		{
-			SVGGradientLayer *gradientLayer = [svgGradient newGradientLayerForObjectRect:_shapeLayer.frame viewportRect:svgElement.rootOfCurrentDocumentFragment.viewBox];
+			SVGGradientLayer *gradientLayer = [svgGradient newGradientLayerForObjectRect:_shapeLayer.frame viewportRect:svgElement.rootOfCurrentDocumentFragment.viewport viewBoxRect:svgElement.rootOfCurrentDocumentFragment.viewBox];
+			
 			
 			DDLogWarn(@"DOESNT WORK, APPLE's API APPEARS BROKEN???? - About to mask layer frame (%@) with a mask of frame (%@)", NSStringFromCGRect(gradientLayer.frame), NSStringFromCGRect(_shapeLayer.frame));
 			gradientLayer.mask =_shapeLayer;

@@ -8,6 +8,8 @@
 #import "BaseClassForAllSVGBasicShapes.h"
 #import "BaseClassForAllSVGBasicShapes_ForSubclasses.h"
 
+@class SVGClipPathElement;
+
 @interface SVGPathElement : BaseClassForAllSVGBasicShapes { }
 
 @end
