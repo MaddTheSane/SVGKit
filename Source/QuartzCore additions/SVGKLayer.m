@@ -9,7 +9,7 @@
 
 @implementation SVGKLayer
 {
-
+	BOOL _addedObservers;
 }
 
 @synthesize SVGImage = _SVGImage;
@@ -24,17 +24,35 @@
 	return layer;
 }
 
+- (instancetype)initWithLayer:(id)layer
+{
+	
+	self = [super initWithLayer:layer];
+	if (self)
+	{
+		_addedObservers = NO;
+		_SVGImage = [layer SVGImage];
+		[self setNeedsDisplay];
+		
+	}
+	return self;
+	
+}
+
 - (instancetype)init
 {
     self = [super init];
     if (self)
 	{
     	self.borderColor = DWBlackColor();
-		
+		_addedObservers = YES;
 		[self addObserver:self forKeyPath:@"showBorder" options:NSKeyValueObservingOptionNew context:NULL];
     }
     return self;
 }
+
+
+
 
 -(void)setSVGImage:(SVGKImage *) newImage
 {
@@ -67,10 +85,10 @@
 
 - (void)dealloc
 {
-    if (self.observationInfo)
-        [self removeObserver:self forKeyPath:@"showBorder"];
+	if (_addedObservers)
+		[self removeObserver:self forKeyPath:@"showBorder"];
 	
-	self.SVGImage = nil;
+	_SVGImage = nil;
 }
 
 -(CGSize)preferredFrameSize
