@@ -73,6 +73,11 @@
 	self.SVGImage = nil;
 }
 
+-(CGSize)preferredFrameSize
+{
+	return self.SVGImage.size;
+}
+
 /** Trigger a call to re-display (at higher or lower draw-resolution) (get Apple to call drawRect: again) */
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {

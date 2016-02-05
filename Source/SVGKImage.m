@@ -562,6 +562,27 @@
 
 #pragma mark - CALayer methods: generate the CALayerTree
 
+- (void)setContentsScaleForText:(CGFloat)scale
+{
+	
+	[self setContentsScaleForText:scale layer:self.CALayerTree];
+	
+}
+
+- (void)setContentsScaleForText:(CGFloat)scale layer:(CALayer *)layer
+{
+	
+	for (CALayer *child in layer.sublayers) {
+		
+		if ([child isKindOfClass:[CATextLayer class]])
+			[child setContentsScale:scale];
+		
+		[self setContentsScaleForText:scale layer:child];
+		
+	}
+	
+}
+
 - (CALayer *)layerWithIdentifier:(NSString *)identifier
 {
 	return [self layerWithIdentifier:identifier layer:self.CALayerTree];

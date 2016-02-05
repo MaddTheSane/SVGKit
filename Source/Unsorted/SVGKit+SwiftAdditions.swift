@@ -10,7 +10,7 @@ import Foundation
 
 extension SVGKNodeList: SequenceType {
 	public func generate() -> IndexingGenerator<[SVGKNode]> {
-		return (internalArray as NSArray as [SVGKNode]).generate()
+		return (internalArray as NSArray as! [SVGKNode]).generate()
 	}
 }
 

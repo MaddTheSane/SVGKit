@@ -132,6 +132,11 @@
 	NSFontTraitMask traitMask = 0;
 	NSInteger fontWeightCG = 0;
 	
+	if ([actualFamily characterAtIndex:0]=='\'')
+	{
+		actualFamily = [actualFamily substringWithRange:NSMakeRange(1, actualFamily.length-2)];
+	}
+	
 	[self getFontTrait:&traitMask weight:&fontWeightCG];
 	
 	//Parts of this code were taken from the SVGImageRep project
@@ -178,6 +183,7 @@
 	CGRect unTransformedFinalBounds = { CGPointZero, suggestedUntransformedSize}; // everything's been pre-scaled by [self transformAbsolute]
 	
 	CATextLayer *label = [[CATextLayer alloc] init];
+	[label setActions:@{@"contentsScale":[NSNull null], @"contents":[NSNull null], @"string":[NSNull null]}];
 	[SVGHelperUtilities configureCALayer:label usingElement:self];
 	
 	label.font = (__bridge CFTypeRef)font;
@@ -225,7 +231,7 @@
 	 
 	 If/when Apple fixes their bugs - or if you know enough about their API's to workaround the bugs, feel free to fix this code.
 	 */
-	CGFloat offsetToConvertSVGOriginToAppleOrigin = - suggestedUntransformedSize.height;
+	CGFloat offsetToConvertSVGOriginToAppleOrigin = - suggestedUntransformedSize.height*0.625;
 	CGSize fakeSizeToApplyNonTranslatingPartsOfTransform = CGSizeMake( 0, offsetToConvertSVGOriginToAppleOrigin);
 	
 	label.position = CGPointMake( 0,

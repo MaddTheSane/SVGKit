@@ -86,6 +86,8 @@ typedef void (^SVGKImageAsynchronousLoadingDelegate)(SVGKImage* loadedImage);
 @property (nonatomic, strong, readonly) SVGSVGElement* DOMTree; // needs renaming + (possibly) replacing by DOMDocument
 @property (nonatomic, strong, readonly) CALayer* CALayerTree;
 
+- (void)setContentsScaleForText:(CGFloat)scale;
+
 #pragma mark - methods to quick load an SVG as an image
 /**
  This is the preferred method for loading SVG files.
