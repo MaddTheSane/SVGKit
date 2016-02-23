@@ -744,6 +744,8 @@
 		55F2686219B66C8E00F6410E /* TinySVGTextAreaElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F2686019B66C8E00F6410E /* TinySVGTextAreaElement.m */; };
 		55F2686319B66C8E00F6410E /* TinySVGTextAreaElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F2686019B66C8E00F6410E /* TinySVGTextAreaElement.m */; };
 		55F3267A178156770064271D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55F32679178156770064271D /* QuartzCore.framework */; };
+		ED558FCA1C7041AB0093AAF8 /* SVGKTextLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = ED558FC81C7041AB0093AAF8 /* SVGKTextLayer.h */; };
+		ED558FCB1C7041AB0093AAF8 /* SVGKTextLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = ED558FC91C7041AB0093AAF8 /* SVGKTextLayer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1267,6 +1269,8 @@
 		55F32679178156770064271D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		55F3267B178156EF0064271D /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		D3E1A8F41A3E224600813D88 /* Lumberjack.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Lumberjack.xcodeproj; path = CocoaLumberjack/Framework/Desktop/Lumberjack.xcodeproj; sourceTree = "<group>"; };
+		ED558FC81C7041AB0093AAF8 /* SVGKTextLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVGKTextLayer.h; sourceTree = "<group>"; };
+		ED558FC91C7041AB0093AAF8 /* SVGKTextLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVGKTextLayer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1694,6 +1698,8 @@
 		5540E73217387F2B004029EF /* QuartzCore additions */ = {
 			isa = PBXGroup;
 			children = (
+				ED558FC81C7041AB0093AAF8 /* SVGKTextLayer.h */,
+				ED558FC91C7041AB0093AAF8 /* SVGKTextLayer.m */,
 				55A5AD881760037A009F2FDD /* CALayer+RecursiveClone.h */,
 				55A5AD891760037A009F2FDD /* CALayer+RecursiveClone.m */,
 				55F2684919B66B9C00F6410E /* CALayerWithClipRender.h */,
@@ -2116,6 +2122,7 @@
 				55788779178892D30021D775 /* SVGKImage-private.h in Headers */,
 				5574ADAA17889CA000EA4281 /* SVGKSource-private.h in Headers */,
 				55A5AD6C175FEBF4009F2FDD /* ConverterSVGToCALayer.h in Headers */,
+				ED558FCA1C7041AB0093AAF8 /* SVGKTextLayer.h in Headers */,
 				55801825176E4D7800F64989 /* BlankSVG.h in Headers */,
 				558BE71C177B9D3F00DC9516 /* SVGKImage+CacheManagement.h in Headers */,
 				55435575177F4F5D007E1FAD /* SVGKImageRep.h in Headers */,
@@ -2575,6 +2582,7 @@
 				55B4D7A4173EC58700D2C676 /* SVGKFastImageView.m in Sources */,
 				55B4D7A6173EC58700D2C676 /* SVGKImageView.m in Sources */,
 				55B4D7A8173EC58700D2C676 /* SVGKLayeredImageView.m in Sources */,
+				ED558FCB1C7041AB0093AAF8 /* SVGKTextLayer.m in Sources */,
 				55B4D7A9173EC87C00D2C676 /* SVGKLayer.m in Sources */,
 				55B4D7AA173ECEA200D2C676 /* CALayerExporter.m in Sources */,
 				557E69D4174014E4006B0029 /* SVGKCGFloatAdditions.m in Sources */,
