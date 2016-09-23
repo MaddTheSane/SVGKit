@@ -153,6 +153,8 @@
 		5564192E1D1C5BC40091AD96 /* tspan01.svg in Resources */ = {isa = PBXBuildFile; fileRef = 661EEA7C1ACC2FBB007176B0 /* tspan01.svg */; };
 		5564192F1D1C5BCC0091AD96 /* Licenses.plist in Resources */ = {isa = PBXBuildFile; fileRef = 661EEA421ACC04F2007176B0 /* Licenses.plist */; };
 		556419311D1C5BFB0091AD96 /* SampleFileInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556419301D1C5BFB0091AD96 /* SampleFileInfo.swift */; };
+		556419331D1C635A0091AD96 /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556419321D1C635A0091AD96 /* MainMenuViewController.swift */; };
+		556419351D1C6BA00091AD96 /* GridOfImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556419341D1C6BA00091AD96 /* GridOfImagesViewController.swift */; };
 		556C405119A5122800733CBB /* test-stroke-dash-array.svg in Resources */ = {isa = PBXBuildFile; fileRef = 556C405019A5122800733CBB /* test-stroke-dash-array.svg */; };
 		661A0DCF161727CF008D5FBE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 661A0DCE161727CF008D5FBE /* UIKit.framework */; };
 		661A0DD1161727CF008D5FBE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 661A0DD0161727CF008D5FBE /* Foundation.framework */; };
@@ -405,6 +407,8 @@
 		556418AB1D1C53CA0091AD96 /* MasterViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MasterViewController_iPhone.xib; sourceTree = "<group>"; };
 		556418B01D1C55750091AD96 /* AllSpecImages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllSpecImages.swift; sourceTree = "<group>"; };
 		556419301D1C5BFB0091AD96 /* SampleFileInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleFileInfo.swift; sourceTree = "<group>"; };
+		556419321D1C635A0091AD96 /* MainMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
+		556419341D1C6BA00091AD96 /* GridOfImagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridOfImagesViewController.swift; sourceTree = "<group>"; };
 		556C405019A5122800733CBB /* test-stroke-dash-array.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "test-stroke-dash-array.svg"; sourceTree = "<group>"; };
 		661A0DCA161727CF008D5FBE /* Demo-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Demo-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		661A0DCE161727CF008D5FBE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -593,21 +597,39 @@
 		556418871D1C52F90091AD96 /* Demo-iOS-Swift */ = {
 			isa = PBXGroup;
 			children = (
+				556419371D1C6BC20091AD96 /* Classes */,
+				556419361D1C6BB20091AD96 /* Resources */,
+			);
+			path = "Demo-iOS-Swift";
+			sourceTree = "<group>";
+		};
+		556419361D1C6BB20091AD96 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				556418961D1C52F90091AD96 /* Info.plist */,
 				556418A81D1C53CA0091AD96 /* iPadDetailViewController.xib */,
 				556418A91D1C53CA0091AD96 /* iPhoneDetailViewController.xib */,
 				556418AA1D1C53CA0091AD96 /* MasterViewController_iPad.xib */,
 				556418AB1D1C53CA0091AD96 /* MasterViewController_iPhone.xib */,
 				556418A61D1C539D0091AD96 /* SB~iphone.storyboard */,
+				556418911D1C52F90091AD96 /* Assets.xcassets */,
+				556418931D1C52F90091AD96 /* LaunchScreen.storyboard */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		556419371D1C6BC20091AD96 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
 				556418881D1C52F90091AD96 /* AppDelegate.swift */,
 				5564188A1D1C52F90091AD96 /* MasterViewController.swift */,
 				5564188C1D1C52F90091AD96 /* DetailViewController.swift */,
+				556419321D1C635A0091AD96 /* MainMenuViewController.swift */,
+				556419341D1C6BA00091AD96 /* GridOfImagesViewController.swift */,
 				556418B01D1C55750091AD96 /* AllSpecImages.swift */,
 				556419301D1C5BFB0091AD96 /* SampleFileInfo.swift */,
-				556418911D1C52F90091AD96 /* Assets.xcassets */,
-				556418931D1C52F90091AD96 /* LaunchScreen.storyboard */,
-				556418961D1C52F90091AD96 /* Info.plist */,
 			);
-			path = "Demo-iOS-Swift";
+			name = Classes;
 			sourceTree = "<group>";
 		};
 		661A0DBF161727CF008D5FBE = {
@@ -1286,6 +1308,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				556419351D1C6BA00091AD96 /* GridOfImagesViewController.swift in Sources */,
+				556419331D1C635A0091AD96 /* MainMenuViewController.swift in Sources */,
 				556418B11D1C55750091AD96 /* AllSpecImages.swift in Sources */,
 				5564188D1D1C52F90091AD96 /* DetailViewController.swift in Sources */,
 				5564188B1D1C52F90091AD96 /* MasterViewController.swift in Sources */,

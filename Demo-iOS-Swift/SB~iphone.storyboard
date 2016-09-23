@@ -8,7 +8,7 @@
         <!--Main Menu View Controller-->
         <scene sceneID="EuO-L4-nda">
             <objects>
-                <viewController id="LdR-fp-OIK" customClass="VCMainMenuViewController" sceneMemberID="viewController">
+                <viewController id="LdR-fp-OIK" customClass="MainMenuViewController" customModule="Demo_iOS_Swift" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rsa-uc-egq">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -188,7 +188,7 @@
         <!--Grid Of Images View Controller-->
         <scene sceneID="N5g-CU-sk2">
             <objects>
-                <viewController id="NZn-32-QPx" customClass="VCGridOfImagesViewController" sceneMemberID="viewController">
+                <viewController id="NZn-32-QPx" customClass="GridOfImagesViewController" customModule="Demo_iOS_Swift" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4ap-fd-Qcf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -385,7 +385,7 @@
         <!--All Spec Images-->
         <scene sceneID="kpa-gQ-eyD">
             <objects>
-                <viewController id="Bjd-oH-4ic" customClass="VCAllSpecImages" sceneMemberID="viewController">
+                <viewController id="Bjd-oH-4ic" customClass="AllSpecImages" customModule="Demo_iOS_Swift" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="geW-EW-A16">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

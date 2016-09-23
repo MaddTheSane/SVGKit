@@ -7,11 +7,38 @@
 //
 
 import UIKit
+import SVGKit
+
+private let kTimeIntervalForLastReRenderOfSVGFromMemory = "timeIntervalForLastReRenderOfSVGFromMemory"
+
+private class ImageLoadingOptions {
+	var requiresLayeredImageView: Bool = false
+	var overrideImageSize: CGSize
+	var overrideImageRenderScale: CGFloat
+	var localFileSource: SVGKSourceLocalFile?
+
+	init(source: SVGKSource) {
+		localFileSource = source as? SVGKSourceLocalFile
+		
+		overrideImageRenderScale = 1
+		overrideImageSize = CGSize.zero
+	}
+}
 
 class DetailViewController: UIViewController {
 
-	@IBOutlet weak var detailDescriptionLabel: UILabel!
+	var sourceOfCurrentDocument: SVGKSource!
+	var exportText: UITextView!
+	var exportLog: NSMutableString!
+	
+	@IBOutlet var toolbar: UIToolbar!
+	@IBOutlet var scrollViewForSVG: UIScrollView!
+	@IBOutlet var contentView: SVGKImageView!
+	@IBOutlet var viewActivityIndicator: UIActivityIndicatorView!
+	@IBOutlet var progressLoading: UIProgressView!
+	@IBOutlet var subViewLoadingPopup: UIView!
 
+	@IBOutlet var labelParseTime: UILabel!
 
 	var detailItem: AnyObject? {
 		didSet {
@@ -23,9 +50,9 @@ class DetailViewController: UIViewController {
 	func configureView() {
 		// Update the user interface for the detail item.
 		if let detail = self.detailItem {
-		    if let label = self.detailDescriptionLabel {
-		        label.text = detail.description
-		    }
+		    //if let label = self.detailDescriptionLabel {
+		    //    label.text = detail.description
+		    //}
 		}
 	}
 
@@ -40,6 +67,30 @@ class DetailViewController: UIViewController {
 		// Dispose of any resources that can be recreated.
 	}
 
-
+	@IBAction func animate(sender: AnyObject!) {
+		
+	}
+	
+	@IBAction func showHideBorder(sender: AnyObject!) {
+		
+	}
 }
 
+/*
+UIPopoverControllerDelegate, UISplitViewControllerDelegate,
+#if V_1_COMPATIBILITY_COMPILE_CALAYEREXPORTER_CLASS
+CALayerExporterDelegate,
+#endif
+UIScrollViewDelegate*/
+
+extension DetailViewController: UIPopoverControllerDelegate {
+	
+}
+
+extension DetailViewController: UISplitViewControllerDelegate {
+	
+}
+
+extension DetailViewController: UIScrollViewDelegate {
+	
+}
