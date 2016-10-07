@@ -2,6 +2,6 @@
 
 @interface SVGKCSSRuleList ()
 
-@property(nonatomic,strong) NSMutableArray* internalArray;
+@property(nonatomic,strong) NSMutableArray<SVGKCSSRule*>* internalArray;
 
 @end

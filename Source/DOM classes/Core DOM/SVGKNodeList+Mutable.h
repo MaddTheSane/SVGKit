@@ -6,6 +6,6 @@
 
 @interface SVGKNodeList()
 
-@property(nonatomic,strong) NSMutableArray* internalArray;
+@property(nonatomic,strong) NSMutableArray<SVGKNode*>* internalArray;
 
 @end

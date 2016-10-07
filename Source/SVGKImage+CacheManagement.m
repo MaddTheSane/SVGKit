@@ -38,6 +38,17 @@ static NSMutableDictionary *SVGCacheObject = nil;
 	}
 }
 
++ (void)setCacheEnabled:(BOOL)cacheEnabled
+{
+	if ([self isCacheEnabled] != cacheEnabled) {
+		if (cacheEnabled) {
+			[self enableCache];
+		} else {
+			[self disableCache];
+		}
+	}
+}
+
 + (BOOL)isCacheEnabled
 {
 	BOOL isEnabled = (SVGCacheObject != nil);

@@ -67,9 +67,11 @@ typedef NS_ENUM(int, SVGKLoggingLevel)
 + (void) enableLogging;
 + (void) setLogLevel:(SVGKLoggingLevel)newLevel;
 + (SVGKLoggingLevel) logLevel;
+@property (class) SVGKLoggingLevel logLevel;
 
 + (void) setRawLogLevel:(NSUInteger)rawLevel;
 + (NSUInteger) rawLogLevel;
+@property (class) NSUInteger rawLogLevel;
 
 @end
 
@@ -81,10 +83,10 @@ typedef NS_ENUM(int, SVGKLoggingLevel)
 
 #import <Foundation/Foundation.h>
 
-//! Project version number for SVGKitFramework-iOS.
+//! Project version number for SVGKitFramework.
 FOUNDATION_EXPORT double SVGKitFramework_VersionNumber;
 
-//! Project version string for SVGKitFramework-iOS.
+//! Project version string for SVGKitFramework.
 FOUNDATION_EXPORT const unsigned char SVGKitFramework_VersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <SVGKitFramework_iOS/PublicHeader.h>

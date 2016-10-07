@@ -16,24 +16,6 @@ extension SVGKNodeList: Sequence {
 	}
 }
 
-extension SVGKImage {
-	public class var cacheEnabled: Bool {
-		get {
-			return isCacheEnabled()
-		}
-		set {
-			if cacheEnabled == newValue {
-				return
-			}
-			if newValue {
-				enableCache()
-			} else {
-				disableCache()
-			}
-		}
-	}
-}
-
 extension SVGKCSSRuleList: Sequence {
 	public func makeIterator() -> IndexingIterator<[SVGKCSSRule]> {
 		return (internalArray as NSArray as! [SVGKCSSRule]).makeIterator()
@@ -55,7 +37,9 @@ extension SVGKStyleSheetList: Sequence {
 }
 
 extension SVGCurve: Equatable {
-	public static let zeroCurve = SVGCurveMake(0,0,0,0,0,0)
+	public static var zero: SVGCurve {
+		return SVGCurveMake(0, 0, 0, 0, 0, 0)
+	}
 	public init(cx1: Int, cy1: Int, cx2: Int, cy2: Int, px: Int, py: Int) {
 		self = SVGCurveMake(CGFloat(cx1), CGFloat(cy1), CGFloat(cx2), CGFloat(cy2), CGFloat(px), CGFloat(py))
 	}
@@ -80,12 +64,12 @@ extension SVGRect: Equatable {
 	}
 	
 	/// Convenience variable to convert to ObjectiveC's kind of rect
-	public var cgRect: CGRect {
+	public var `CGRect`: CoreGraphics.CGRect {
 		return CGRectFromSVGRect(self)
 	}
 	
 	/// Convenience variable to convert to ObjectiveC's kind of size - <b>Only</b> the width and height of this rect.
-	public var cgSize: CGSize {
+	public var `CGSize`: CoreGraphics.CGSize {
 		return CGSizeFromSVGRect(self)
 	}
 }
@@ -99,7 +83,7 @@ extension SVGColor: Hashable, CustomStringConvertible, CustomDebugStringConverti
         r = red; g = green; b = blue; a = alpha
     }
 	
-	public var cgColor: CGColor {
+	public var `CGColor`: CoreGraphics.CGColor {
 		return CGColorWithSVGColor(self)
 	}
 	
