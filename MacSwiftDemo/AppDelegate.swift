@@ -12,7 +12,7 @@ import SVGKit
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-	func applicationDidFinishLaunching(aNotification: NSNotification) {
+	func applicationDidFinishLaunching(_ aNotification: Notification) {
 		// Insert code here to initialize your application
         SVGKit.enableLogging()
 		
@@ -20,7 +20,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         SVGKImageRep.unloadSVGKImageRep()
 	}
 
-	func applicationWillTerminate(aNotification: NSNotification) {
+	func applicationWillTerminate(_ aNotification: Notification) {
 		// Insert code here to tear down your application
 	}
 }

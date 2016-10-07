@@ -1844,7 +1844,7 @@
 				557003B01B24137E00C623AB /* CocoaLumberjackSwift.framework */,
 				557003B21B24137E00C623AB /* CocoaLumberjack.framework */,
 				557003B41B24137E00C623AB /* CocoaLumberjackSwift.framework */,
-				557003B61B24137E00C623AB /* libCocoaLumberjack-iOS-Static.a */,
+				557003B61B24137E00C623AB /* libCocoaLumberjack.a */,
 				559658F21BEC0BE000D8BB39 /* CocoaLumberjack.framework */,
 				559658F41BEC0BE000D8BB39 /* CocoaLumberjackSwift.framework */,
 				559658F61BEC0BE000D8BB39 /* CocoaLumberjack.framework */,
@@ -2321,11 +2321,14 @@
 			attributes = {
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0710;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "C.W. Betts";
 				TargetAttributes = {
 					551164AA1970EE8B00C8A63D = {
 						CreatedOnToolsVersion = 6.0;
+					};
+					5540E66B17387C9F004029EF = {
+						LastSwiftMigration = 0800;
 					};
 					55825B4019EC80C400635497 = {
 						CreatedOnToolsVersion = 6.1;
@@ -2391,10 +2394,10 @@
 			remoteRef = 557003B31B24137E00C623AB /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		557003B61B24137E00C623AB /* libCocoaLumberjack-iOS-Static.a */ = {
+		557003B61B24137E00C623AB /* libCocoaLumberjack.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = "libCocoaLumberjack-iOS-Static.a";
+			path = libCocoaLumberjack.a;
 			remoteRef = 557003B51B24137E00C623AB /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
@@ -2919,13 +2922,13 @@
 		551164BF1970EE8B00C8A63D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "XCodeProjectData/SVGKit-iOS/SVGKit-iOS-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
@@ -2952,13 +2955,13 @@
 		551164C01970EE8B00C8A63D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "XCodeProjectData/SVGKit-iOS/SVGKit-iOS-Prefix.pch";
@@ -2997,8 +3000,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
@@ -3008,6 +3013,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -3040,8 +3046,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
@@ -3050,6 +3058,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -3058,17 +3067,18 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 			};
 			name = Release;
 		};
 		5540E68217387C9F004029EF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "XCodeProjectData/SVGKit-OSX/SVGKit-OSX-Prefix.pch";
@@ -3082,6 +3092,7 @@
 				MODULEMAP_FILE = "XCodeProjectData/SVGKit-OSX/SVGKit.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.github.maddthesane.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = SVGKit;
+				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Debug;
@@ -3089,11 +3100,11 @@
 		5540E68317387C9F004029EF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "XCodeProjectData/SVGKit-OSX/SVGKit-OSX-Prefix.pch";
@@ -3107,6 +3118,7 @@
 				MODULEMAP_FILE = "XCodeProjectData/SVGKit-OSX/SVGKit.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.github.maddthesane.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = SVGKit;
+				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Release;
@@ -3134,7 +3146,7 @@
 					"$(inherited)",
 					"${SDK_DIR}/usr/include/libxml2",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				KEEP_PRIVATE_EXTERNS = YES;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3167,7 +3179,7 @@
 					"$(inherited)",
 					"${SDK_DIR}/usr/include/libxml2",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				KEEP_PRIVATE_EXTERNS = YES;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

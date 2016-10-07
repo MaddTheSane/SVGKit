@@ -10,9 +10,9 @@ import Foundation
 import CoreGraphics
 import SVGKit.SVGKStyleSheetList
 
-extension SVGKNodeList: SequenceType {
-	public func generate() -> IndexingGenerator<[SVGKNode]> {
-		return (internalArray as NSArray as! [SVGKNode]).generate()
+extension SVGKNodeList: Sequence {
+	public func makeIterator() -> IndexingIterator<[SVGKNode]> {
+		return (internalArray as NSArray as! [SVGKNode]).makeIterator()
 	}
 }
 
@@ -34,16 +34,16 @@ extension SVGKImage {
 	}
 }
 
-extension SVGKCSSRuleList: SequenceType {
-	public func generate() -> IndexingGenerator<[SVGKCSSRule]> {
-		return (internalArray as NSArray as! [SVGKCSSRule]).generate()
+extension SVGKCSSRuleList: Sequence {
+	public func makeIterator() -> IndexingIterator<[SVGKCSSRule]> {
+		return (internalArray as NSArray as! [SVGKCSSRule]).makeIterator()
 	}
 }
 
-extension SVGKStyleSheetList: SequenceType {
-	public func generate() -> AnyGenerator<SVGKStyleSheet> {
+extension SVGKStyleSheetList: Sequence {
+	public func makeIterator() -> AnyIterator<SVGKStyleSheet> {
 		var index = 0
-		return anyGenerator {
+		return AnyIterator {
 			if index < Int(self.length) {
 				return self[index++]
 			}
