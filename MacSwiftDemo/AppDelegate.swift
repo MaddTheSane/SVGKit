@@ -17,7 +17,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         SVGKit.enableLogging()
 		
 		//Don't attempt to use SVGKImageRep: just unload it.
-        SVGKImageRep.unloadSVGKImageRep()
+        SVGKImageRep.unload()
 	}
 
 	func applicationWillTerminate(_ aNotification: Notification) {

@@ -19,7 +19,7 @@ class ViewController: NSViewController {
 		layeredImage?.image = SVGKImage(named: "Coins")
 	}
 
-	override var representedObject: AnyObject? {
+	override var representedObject: Any? {
 		didSet {
 		// Update the view, if already loaded.
 		}

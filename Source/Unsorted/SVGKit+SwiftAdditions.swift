@@ -45,7 +45,9 @@ extension SVGKStyleSheetList: Sequence {
 		var index = 0
 		return AnyIterator {
 			if index < Int(self.length) {
-				return self[index++]
+				let aSelf = self[index]
+				index += 1
+				return aSelf
 			}
 			return nil
 		}
