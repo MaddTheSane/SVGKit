@@ -31,7 +31,7 @@ static NSSet *_svgGradientParserSupportedTags = nil;
     return _svgGradientParserSupportedTags;
 }
 
--(SVGKNode *)handleStartElement:(NSString *)name document:(SVGKSource *)document namePrefix:(NSString *)prefix namespaceURI:(NSString *)XMLNSURI attributes:(NSMutableDictionary *)attributes parseResult:(SVGKParseResult *)parseResult parentNode:(SVGKNode *)parentNode
+-(SVGKNode *)handleStartElement:(NSString *)name document:(SVGKSource *)document namePrefix:(NSString *)prefix namespaceURI:(NSString *)XMLNSURI attributes:(NSMutableDictionary<NSString*,SVGKAttr*> *)attributes parseResult:(SVGKParseResult *)parseResult parentNode:(SVGKNode *)parentNode
 {
 	//    SVGColor startColor = SVGColorFromString(<#const char *string#>)
 	//    CGPoint startPos = CGPointMake([attributes objectFor, <#CGFloat y#>)

@@ -63,7 +63,7 @@ static NSDictionary *elementMap = nil;
 	return [NSMutableArray arrayWithArray:[elementMap allKeys]];
 }
 
-- (SVGKNode*) handleStartElement:(NSString *)name document:(SVGKSource*) SVGKSource namePrefix:(NSString*)prefix namespaceURI:(NSString*) XMLNSURI attributes:(NSMutableDictionary *)attributes parseResult:(SVGKParseResult *)parseResult parentNode:(SVGKNode*) parentNode
+- (SVGKNode*) handleStartElement:(NSString *)name document:(SVGKSource*) SVGKSource namePrefix:(NSString*)prefix namespaceURI:(NSString*) XMLNSURI attributes:(NSMutableDictionary<NSString*,SVGKAttr*> *)attributes parseResult:(SVGKParseResult *)parseResult parentNode:(SVGKNode*) parentNode
 {
 	if( [[self supportedNamespaces] containsObject:XMLNSURI] )
 	{

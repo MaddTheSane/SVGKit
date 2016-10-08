@@ -20,7 +20,7 @@
 	return [NSMutableArray array];
 }
 
-- (SVGKNode*) handleStartElement:(NSString *)name document:(SVGKSource*) SVGKSource namePrefix:(NSString*)prefix namespaceURI:(NSString*) XMLNSURI attributes:(NSMutableDictionary *)attributeObjects parseResult:(SVGKParseResult *)parseResult parentNode:(SVGKNode*) parentNode
+- (SVGKNode*) handleStartElement:(NSString *)name document:(SVGKSource*) SVGKSource namePrefix:(NSString*)prefix namespaceURI:(NSString*) XMLNSURI attributes:(NSMutableDictionary<NSString*,SVGKAttr*> *)attributeObjects parseResult:(SVGKParseResult *)parseResult parentNode:(SVGKNode*) parentNode
 {
 	if( [[self supportedNamespaces] count] == 0
 	   || [[self supportedNamespaces] containsObject:XMLNSURI] ) // unnecesary here, but allows safe updates to this parser's matching later

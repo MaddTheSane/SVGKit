@@ -17,6 +17,7 @@
 @class SVGKSource;
 @class SVGKParseResult;
 @class SVGKNode;
+@class SVGKAttr;
 
 /*! Experimental: allow SVGKit parser-extensions to insert custom data into an SVGKParseResult */
 #define ENABLE_PARSER_EXTENSIONS_CUSTOM_DATA 0
@@ -39,7 +40,7 @@
  Because SVG-DOM uses DOM, custom parsers can return any object they like - so long as its some kind of
  subclass of DOM's Node class
  */
-- (SVGKNode*)handleStartElement:(NSString *)name document:(SVGKSource*) document namePrefix:(NSString*)prefix namespaceURI:(NSString*) XMLNSURI attributes:(NSMutableDictionary *)attributes parseResult:(SVGKParseResult*) parseResult parentNode:(SVGKNode*) parentNode;
+- (SVGKNode*)handleStartElement:(NSString *)name document:(SVGKSource*) document namePrefix:(NSString*)prefix namespaceURI:(NSString*) XMLNSURI attributes:(NSMutableDictionary<NSString*,SVGKAttr*> *)attributes parseResult:(SVGKParseResult*) parseResult parentNode:(SVGKNode*) parentNode;
 
 /**
  Primarily used by the few nodes - <TEXT> and <TSPAN> - that need to post-process their text-content.

@@ -733,15 +733,15 @@ static void	charactersFoundSAX (void *ctx, const xmlChar *chars, int len) {
 static void errorEncounteredSAX (void *ctx, const char *msg, ...) {
     va_list va;
     NSString *errStr = nil;
-	SVGKParser *self = (__bridge SVGKParser *)(ctx);
+    SVGKParser *self = (__bridge SVGKParser *)(ctx);
     va_start(va, msg);
     errStr = [[NSString alloc] initWithFormat:@(msg) arguments:va];
     va_end(va);
 
-	SVGKitLogWarn(@"Error encountered during parse: %@", errStr);
-	SVGKParseResult* parseResult = self.currentParseRun;
+    SVGKitLogWarn(@"Error encountered during parse: %@", errStr);
+    SVGKParseResult* parseResult = self.currentParseRun;
     
-	[parseResult addSAXError:[NSError errorWithDomain:@"SVG-SAX" code:1 userInfo:@{NSLocalizedDescriptionKey: errStr}]];
+    [parseResult addSAXError:[NSError errorWithDomain:@"SVG-SAX" code:1 userInfo:@{NSLocalizedDescriptionKey: errStr}]];
 }
 
 static void	unparsedEntityDeclaration(void * ctx,
@@ -776,7 +776,7 @@ static void structuredError		(void * userData,
 	if( error->str3 )
 		details[@"bonusInfo3"] = @(error->str3);
 	
-	NSError* objcError = [NSError errorWithDomain:[@(error->domain) stringValue] code:error->code userInfo:details];
+	NSError* objcError = [NSError errorWithDomain:[NSString stringWithFormat:@"libxml error domain %i", error->domain] code:error->code userInfo:details];
 	
 	SVGKParser *NSctx = (__bridge SVGKParser*)(userData);
 	SVGKParseResult* parseResult = NSctx.currentParseRun;
@@ -792,6 +792,8 @@ static void structuredError		(void * userData,
 			
 		case XML_ERR_FATAL:
 			[parseResult addParseErrorFatal:objcError];
+            break;
+            
         default:
             break;
 	}
@@ -891,7 +893,6 @@ static NSMutableDictionary *NSDictionaryFromLibxmlAttributes (const xmlChar **at
 #define MAX_NAME 256
 
 +(NSDictionary *) NSDictionaryFromCSSAttributes: (SVGKAttr*) styleAttribute {
-	
 	if( styleAttribute == nil )
 	{
 		SVGKitLogWarn(@"[%@] WARNING: asked to convert an empty CSS string into a CSS dictionary; returning empty dictionary", [self class] );

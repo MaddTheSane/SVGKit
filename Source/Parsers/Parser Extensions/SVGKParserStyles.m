@@ -32,7 +32,7 @@ static NSSet *_svgParserStylesSupportedTags = nil;
     return _svgParserStylesSupportedTags;
 }
 
--(SVGKNode *)handleStartElement:(NSString *)name document:(SVGKSource *)document namePrefix:(NSString *)prefix namespaceURI:(NSString *)XMLNSURI attributes:(NSMutableDictionary *)attributes parseResult:(SVGKParseResult *)parseResult parentNode:(SVGKNode *)parentNode
+-(SVGKNode *)handleStartElement:(NSString *)name document:(SVGKSource *)document namePrefix:(NSString *)prefix namespaceURI:(NSString *)XMLNSURI attributes:(NSMutableDictionary<NSString*,SVGKAttr*> *)attributes parseResult:(SVGKParseResult *)parseResult parentNode:(SVGKNode *)parentNode
 {
 	if( [[self supportedNamespaces] containsObject:XMLNSURI] )
 	{
