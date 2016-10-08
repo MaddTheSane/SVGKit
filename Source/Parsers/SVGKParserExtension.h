@@ -27,13 +27,13 @@
  *
  * e.g. the main parser returns "[NSArray arrayWithObjects:@"http://www.w3.org/2000/svg", nil];"
  */
--(NSArray*) supportedNamespaces;
+-(NSArray<NSString*>*) supportedNamespaces;
 
 /*! Array of NSString's, one string for each XML tag (within a supported namespace!) that this parser-extension can parse
  *
  * e.g. the main parser returns "[NSArray arrayWithObjects:@"svg", @"title", @"defs", @"path", @"line", @"circle", ...etc... , nil];"
  */
--(NSArray*) supportedTags;
+-(NSArray<NSString*>*) supportedTags;
 
 /*!
  Because SVG-DOM uses DOM, custom parsers can return any object they like - so long as its some kind of

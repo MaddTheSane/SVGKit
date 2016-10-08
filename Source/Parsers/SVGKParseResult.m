@@ -1,7 +1,9 @@
 #import "SVGKParseResult.h"
 
 @implementation SVGKParseResult
-
+{
+	NSMutableArray<NSError*>* warnings, * errorsRecoverable, * errorsFatal;
+}
 @synthesize libXMLFailed;
 @synthesize parsedDocument, rootOfSVGTree, namespacesEncountered;
 @synthesize warnings, errorsRecoverable, errorsFatal;
@@ -14,9 +16,9 @@
 {
     self = [super init];
     if (self) {
-        self.warnings = [[NSMutableArray alloc] init];
-		self.errorsRecoverable = [[NSMutableArray alloc] init];
-		self.errorsFatal = [[NSMutableArray alloc] init];
+        warnings = [[NSMutableArray alloc] init];
+		errorsRecoverable = [[NSMutableArray alloc] init];
+		errorsFatal = [[NSMutableArray alloc] init];
 		
 		self.namespacesEncountered = [[NSMutableDictionary alloc] init];
 		
@@ -35,31 +37,31 @@
 -(void) addSourceError:(NSError*) fatalError
 {
 	SVGKitLogError(@"[%@] SVG ERROR: %@", [self class], fatalError);
-	[self.errorsRecoverable addObject:fatalError];
+	[errorsRecoverable addObject:fatalError];
 }
 
 -(void) addParseWarning:(NSError*) warning
 {
 	SVGKitLogWarn(@"[%@] SVG WARNING: %@", [self class], warning);
-	[self.warnings addObject:warning];
+	[warnings addObject:warning];
 }
 
 -(void) addParseErrorRecoverable:(NSError*) recoverableError
 {
 	SVGKitLogWarn(@"[%@] SVG WARNING (recoverable): %@", [self class], recoverableError);
-	[self.errorsRecoverable addObject:recoverableError];
+	[errorsRecoverable addObject:recoverableError];
 }
 
 -(void) addParseErrorFatal:(NSError*) fatalError
 {
 	SVGKitLogError(@"[%@] SVG ERROR: %@", [self class], fatalError);
-	[self.errorsFatal addObject:fatalError];
+	[errorsFatal addObject:fatalError];
 }
 
 -(void) addSAXError:(NSError*) saxError
 {
 	SVGKitLogWarn(@"[%@] SVG ERROR: %@", [self class], [saxError localizedDescription]);
-	[self.errorsFatal addObject:saxError];
+	[errorsFatal addObject:saxError];
 }
 
 #if ENABLE_PARSER_EXTENSIONS_CUSTOM_DATA

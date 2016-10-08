@@ -9,7 +9,7 @@
 
 @interface SVGKParseResult : NSObject
 
-@property(nonatomic, strong) NSMutableArray* warnings, * errorsRecoverable, * errorsFatal;
+@property(nonatomic, strong, readonly) NSArray<NSError*>* warnings, * errorsRecoverable, * errorsFatal;
 @property(nonatomic) BOOL libXMLFailed;
 /** 0.0 = no parsing done yet, 0.x = partially parsed, 1.0 = parse complete (no fatal errors) */
 @property(nonatomic) double parseProgressFractionApproximate;

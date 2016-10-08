@@ -1,7 +1,7 @@
 #import "SVGKImage.h"
 #import "SVGKImage+CacheManagement.h"
 
-static NSMutableDictionary *SVGCacheObject = nil;
+static NSMutableDictionary<NSString*,SVGKImage*> *SVGCacheObject = nil;
 
 @implementation SVGKImage (CacheManagement)
 @dynamic nameUsedToInstantiate;
@@ -26,12 +26,7 @@ static NSMutableDictionary *SVGCacheObject = nil;
 + (NSArray*)storedCacheNames
 {
 	if (SVGCacheObject) {
-		NSArray *allKeys = [[SVGCacheObject allKeys] sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-			NSString *str1 = obj1;
-			NSString *str2 = obj2;
-			NSComparisonResult result = [str1 localizedCaseInsensitiveCompare:str2];
-			return result;
-		}];
+		NSArray *allKeys = [[SVGCacheObject allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
 		return allKeys;
 	} else {
 		return @[];
